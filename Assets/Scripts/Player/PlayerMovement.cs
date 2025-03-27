@@ -85,11 +85,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void MyInput()
     {
-        horizontalInput = Input.GetAxis("Horizontal");
-        verticalInput = Input.GetAxis("Vertical");
+        horizontalInput = Input.GetAxisRaw("Horizontal");
+        verticalInput = Input.GetAxisRaw("Vertical");
 
         // jump
-        if(Input.GetKey(jumpKey) && canJump && isGrounded)
+        if (Input.GetKey(jumpKey) && canJump && isGrounded)
         {
             canJump = false;
             Jump();
@@ -99,7 +99,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void StateHandler()
     {
-        // stae springing
+        // state springing
         if(isGrounded && Input.GetKey(sprintKey))
         {
             state = MovementState.sprinting;
@@ -126,22 +126,28 @@ public class PlayerMovement : MonoBehaviour
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
         // on slope
-        if(OnSlope() && !exitingSlope)
+        if (OnSlope() && !exitingSlope)
         {
             rb.AddForce(GetSlopeMoveDirection() * moveSpeed * 20f, ForceMode.Force);
 
-            if(rb.velocity.y > 0)
+            if (rb.velocity.y > 0)
             {
                 rb.AddForce(Vector3.down * 50f, ForceMode.Force);
+            }
+
+            // if player is not holding a directional input, stop moving
+            if (horizontalInput == 0 && verticalInput == 0 && isGrounded)
+            {
+                rb.velocity = Vector3.Lerp(rb.velocity, Vector3.zero, 10f);
             }
         }
 
         // on ground
-        else if(isGrounded)
+        else if (isGrounded)
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
 
         // in air
-        else if(!isGrounded)
+        else if (!isGrounded)
             rb.AddForce(moveDirection.normalized * moveSpeed * airMultiplier, ForceMode.Force);
     }
 
