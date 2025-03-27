@@ -79,10 +79,10 @@ public class PlayerMovement : MonoBehaviour
             rb.drag = 0;
         }
 
-        if (rb.velocity.y < 0.5f && !isGrounded)
+        if (rb.velocity.y < 0.01f && !isGrounded)
         {
             // make gravity stronger when falling
-            rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y + Physics.gravity.y * Time.deltaTime, rb.velocity.z);
+            rb.velocity = Vector3.Lerp(rb.velocity, new Vector3(rb.velocity.x, rb.velocity.y + Physics.gravity.y * Time.deltaTime, rb.velocity.z), 2.5f);
         }
     }
 
