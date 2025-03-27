@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public bool freeze;
+
     [Header("Movement")]
     private float moveSpeed;
     public float walkSpeed;
@@ -68,13 +70,19 @@ public class PlayerMovement : MonoBehaviour
         StateHandler();
 
         // drag handler
-        if(isGrounded)
+        if (isGrounded)
         {
             rb.drag = GroundDrag;
         }
         else
         {
             rb.drag = 0;
+        }
+
+        if (rb.velocity.y < 0.5f && !isGrounded)
+        {
+            // make gravity stronger when falling
+            rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y + Physics.gravity.y * Time.deltaTime, rb.velocity.z);
         }
     }
 
@@ -135,10 +143,10 @@ public class PlayerMovement : MonoBehaviour
                 rb.AddForce(Vector3.down * 50f, ForceMode.Force);
             }
 
-            // if player is not holding a directional input, stop moving
+            // if player is not holding a directional input, slow to a stop
             if (horizontalInput == 0 && verticalInput == 0 && isGrounded)
             {
-                rb.velocity = Vector3.Lerp(rb.velocity, Vector3.zero, 10f);
+                rb.velocity = Vector3.Lerp(rb.velocity, Vector3.zero, 1f);
             }
         }
 
