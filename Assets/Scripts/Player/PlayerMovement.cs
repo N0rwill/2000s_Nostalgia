@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public bool freeze;
+    public bool activeGrapple;
 
     [Header("Movement")]
     private float moveSpeed;
@@ -47,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
 
     public enum MovementState
     {
+        freeze,
         walking,
         sprinting,
         air
@@ -70,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
         StateHandler();
 
         // drag handler
-        if (isGrounded)
+        if (isGrounded && !activeGrapple)
         {
             rb.drag = GroundDrag;
         }
@@ -79,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
             rb.drag = 0;
         }
 
-        if (rb.velocity.y < 0.01f && !isGrounded)
+        if (rb.velocity.y < 0.01f && !isGrounded && !activeGrapple)
         {
             // make gravity stronger when falling
             rb.velocity = Vector3.Lerp(rb.velocity, new Vector3(rb.velocity.x, rb.velocity.y + Physics.gravity.y * Time.deltaTime, rb.velocity.z), 2.5f);
@@ -107,8 +109,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void StateHandler()
     {
+        // state frozen from grappeling
+        if (freeze) 
+        {
+            state = MovementState.freeze;
+            moveSpeed = 0;
+            rb.velocity = Vector3.zero;
+        }
         // state springing
-        if(isGrounded && Input.GetKey(sprintKey))
+        else if(isGrounded && Input.GetKey(sprintKey))
         {
             state = MovementState.sprinting;
             moveSpeed = sprintSpeed;
@@ -131,6 +140,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void MovePlayer()
     {
+        //Can't move if grappling
+        if (activeGrapple) return;
+
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
         // on slope
@@ -161,6 +173,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void SpeedContorl()
     {
+        //Can't move if grappling
+        if (activeGrapple) return;
+
         // limit speed on slope
         if (OnSlope() && !exitingSlope)
         {
@@ -222,5 +237,60 @@ public class PlayerMovement : MonoBehaviour
         Vector3 rayOrigin = transform.position;
         Vector3 rayDirection = Vector3.down * (playerHeight * 0.5f + 0.3f);
         Gizmos.DrawRay(rayOrigin, rayDirection);
+    }
+
+    //GRAPPLE MECHANICS
+
+
+    private bool enableMovementOnNextTouch;
+
+    public void LaunchToPosition(Vector3 targetPosition, float trajectoryHeight)
+    {
+        activeGrapple = true;
+
+        velocityToSet = CalculateLaunchVelocity(transform.position, targetPosition, trajectoryHeight);
+        Invoke(nameof(SetVelocity), 0.1f);
+
+        Invoke(nameof(ResetRestrictions), 3f);
+    }
+
+    public void ResetRestrictions()
+    { 
+        activeGrapple = false;
+    }
+
+    private Vector3 velocityToSet;
+
+    private void SetVelocity()
+    {
+        enableMovementOnNextTouch = true;
+        rb.velocity = velocityToSet;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (enableMovementOnNextTouch)
+        {
+            enableMovementOnNextTouch = false;
+            ResetRestrictions();
+
+            GetComponent<GrappleMovement>().StopGrapple();
+        }
+    }
+
+    
+    
+    //Kinematic equasion for the Grapple Launch mechanic launch distance
+    public Vector3 CalculateLaunchVelocity(Vector3 startPoint, Vector3 endPoint, float trajectoryHeight)
+    {
+        float gravity = Physics.gravity.y;
+        float displacementY = endPoint.y - startPoint.y;
+        Vector3 displacementXZ = new Vector3(endPoint.x - startPoint.x, 0f, endPoint.z - startPoint.z);
+
+        Vector3 velocityY = Vector3.up * Mathf.Sqrt(-2 * gravity * trajectoryHeight);
+        Vector3 velocityXZ = displacementXZ / (Mathf.Sqrt(-2 * trajectoryHeight / gravity)
+            + Mathf.Sqrt(2 * (displacementY - trajectoryHeight) / gravity));
+
+        return velocityXZ + velocityY;
     }
 }

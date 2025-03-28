@@ -15,6 +15,7 @@ public class GrappleMovement : MonoBehaviour
     [Header("Grappling")]
     public float maxGrappleDistance;
     public float grappleDelayTime;
+    public float overshootYAxis;
 
     private Vector3 grapplePoint;
 
@@ -58,6 +59,7 @@ public class GrappleMovement : MonoBehaviour
     private void StartGrapple() 
     {
         if (grapplingCdTimer > 0) return;
+
         grappling = true;
         pm.freeze = true;
 
@@ -94,13 +96,34 @@ public class GrappleMovement : MonoBehaviour
     private void ExecuteGrappleLaunch() 
     {
         pm.freeze = false;
+
+        Vector3 lowestPoint = new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z);
+
+        float grapplePointRelativeYPos = grapplePoint.y - lowestPoint.y;
+        float highestPointOnArc = grapplePointRelativeYPos + overshootYAxis;
+
+        if (grapplePointRelativeYPos < 0) highestPointOnArc = overshootYAxis;
+
+        pm.LaunchToPosition(grapplePoint, highestPointOnArc);
+
+        Invoke(nameof(StopGrapple), 1f);
     }
 
-    private void StopGrapple() 
+    public void StopGrapple() 
     {
         pm.freeze = false;
         grappling = false;
         grapplingCdTimer = grapplingCd;
         lr.enabled = false;
+    }
+
+    public bool IsGrappling()
+    {
+        return grappling;
+    }
+
+    public Vector3 GetGrapplePoint()
+    {
+        return grapplePoint;
     }
 }
