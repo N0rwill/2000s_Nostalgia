@@ -21,6 +21,10 @@ public class PlayerMovement : MonoBehaviour
     public float jumpCooldown;
     public float airMultiplier;
     bool canJump;
+    public float fallMultiplier = 1.2f;
+    public float fallMultiplierTransitionSpeed = 2f;
+    private float fallTimer = 0f;
+    public float maxFallSpeed = 30f;
 
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
@@ -71,6 +75,8 @@ public class PlayerMovement : MonoBehaviour
         MyInput();
         SpeedContorl();
         StateHandler();
+        ApplyFallMultiplier();
+        ClampFallSpeed();
 
         // drag handler
         if (isGrounded && !activeGrapple)
@@ -105,26 +111,26 @@ public class PlayerMovement : MonoBehaviour
     private void StateHandler()
     {
         // state frozen from grappeling
-        if (freeze) 
+        if (freeze)
         {
             state = MovementState.freeze;
             moveSpeed = 0;
             rb.velocity = Vector3.zero;
         }
         // state springing
-        else if(isGrounded && Input.GetKey(sprintKey))
+        else if (isGrounded && Input.GetKey(sprintKey))
         {
             state = MovementState.sprinting;
             moveSpeed = sprintSpeed;
         }
         // state walking
-        else if(isGrounded)
+        else if (isGrounded)
         {
             state = MovementState.walking;
             moveSpeed = walkSpeed;
         }
         // state air
-        else if(!isGrounded)
+        else if (!isGrounded)
         {
             state = MovementState.air;
         }
@@ -209,7 +215,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool OnSlope()
     {
-        if(Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + 0.3f))
+        if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + 0.3f))
         {
             float angle = Vector3.Angle(Vector3.up, slopeHit.normal);
             return angle < maxSlopeAngle && angle != 0;
@@ -223,7 +229,36 @@ public class PlayerMovement : MonoBehaviour
         return Vector3.ProjectOnPlane(moveDirection, slopeHit.normal).normalized;
     }
 
+    private void ApplyFallMultiplier()
+    {
+        if (!isGrounded && !activeGrapple && rb.velocity.y < 0)
+        {
+            // Increment fall timer when falling
+            fallTimer += Time.deltaTime;
 
+            // Use a smoother curve for the transition (easing function)
+            float t = 1 - Mathf.Pow(0.5f, fallTimer * fallMultiplierTransitionSpeed);
+            float currentMultiplier = Mathf.Lerp(1f, 1f + fallMultiplier, t);
+
+            // Apply multiplier directly to gravity instead of adding force
+            Physics.gravity = new Vector3(0, -9.81f * currentMultiplier, 0);
+        }
+        else
+        {
+            // Reset the timer and gravity when not falling
+            fallTimer = 0f;
+            Physics.gravity = new Vector3(0, -9.81f, 0);
+        }
+    }
+
+    private void ClampFallSpeed()
+    {
+        if (!isGrounded && rb.velocity.y < -maxFallSpeed)
+        {
+            // Clamp the vertical velocity to the maximum fall speed
+            rb.velocity = new Vector3(rb.velocity.x, -maxFallSpeed, rb.velocity.z);
+        }
+    }
 
     private void OnDrawGizmos()
     {
@@ -234,9 +269,9 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.DrawRay(rayOrigin, rayDirection);
     }
 
+
+
     //GRAPPLE MECHANICS
-
-
     private bool enableMovementOnNextTouch;
 
     public void LaunchToPosition(Vector3 targetPosition, float trajectoryHeight)
@@ -250,7 +285,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public void ResetRestrictions()
-    { 
+    {
         activeGrapple = false;
     }
 
@@ -273,8 +308,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    
-    
     //Kinematic equasion for the Grapple Launch mechanic launch distance
     public Vector3 CalculateLaunchVelocity(Vector3 startPoint, Vector3 endPoint, float trajectoryHeight)
     {
