@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -79,12 +80,6 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             rb.drag = 0;
-        }
-
-        if (rb.velocity.y < 0.01f && !isGrounded && !activeGrapple)
-        {
-            // make gravity stronger when falling
-            rb.velocity = Vector3.Lerp(rb.velocity, new Vector3(rb.velocity.x, rb.velocity.y + Physics.gravity.y * Time.deltaTime, rb.velocity.z), 2.5f);
         }
     }
 
