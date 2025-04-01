@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class ShadowClone : MonoBehaviour
 {
-    private PlayerMovement player;
+    [SerializeField] private PlayerMovement player;
     public float delayStart;
     private float actDelay;
     private List<PositionInfo> playerPositions = new List<PositionInfo>();
@@ -22,7 +22,7 @@ public class ShadowClone : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+        //player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
     }
 
     void FixedUpdate()
@@ -85,6 +85,7 @@ public class ShadowClone : MonoBehaviour
 [System.Serializable]
 public class PositionInfo
 {
+    //position info
     public Vector3 position;
     public Quaternion rotation;
     public Vector3 scale;
