@@ -4931,7 +4931,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1876866842}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -5031,7 +5031,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -17.36, y: 6.98, z: 6.63}
-  m_LocalScale: {x: 2.7147, y: 2.7147, z: 2.7147}
+  m_LocalScale: {x: 1.5869594, y: 1.5869594, z: 1.5869594}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -5836,6 +5836,10 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 243212079}
+    - target: {fileID: 127216193921079193, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
+      propertyPath: pullForce
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 1536835094194971002, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.98680717
