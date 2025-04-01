@@ -8,20 +8,19 @@ public class GrappleMovement : MonoBehaviour
     private PlayerMovement pm;
     public Transform cam;
     public Transform stickyhand;
-    public LayerMask grapplePull;
-    public LayerMask grappleLaunch;
+    public LayerMask grapple;
     public LineRenderer lr;
 
     [Header("Grappling")]
     public float maxGrappleDistance;
     public float grappleDelayTime;
     public float overshootYAxis;
+    public GameObject grappleObject;
 
     private Vector3 grapplePoint;
 
     [Header("Pulling")]
     public float pullForce = 25f;
-    public GameObject pullableObject;
 
     [Header("Cooldown")]
     public float grapplingCd;
@@ -69,27 +68,32 @@ public class GrappleMovement : MonoBehaviour
 
         RaycastHit hit;
 
-        if (Physics.Raycast(cam.position, cam.forward, out hit, maxGrappleDistance, grappleLaunch))
+        if (Physics.Raycast(cam.position, cam.forward, out hit, maxGrappleDistance, grapple))
         {
-            grapplePoint = hit.point;
+            if (hit.collider.gameObject.CompareTag("GrappleLaunch"))
+            {
+                grapplePoint = hit.point;
 
-            Invoke(nameof(ExecuteGrappleLaunch), grappleDelayTime);
+                grappleObject = hit.collider.gameObject;
+
+                Invoke(nameof(ExecuteGrappleLaunch), grappleDelayTime);
+            }
+            else if (hit.collider.gameObject.CompareTag("GrapplePull"))
+            {
+                grapplePoint = hit.point;
+
+                grappleObject = hit.collider.gameObject;
+
+                Invoke(nameof(ExecuteGrapplePull), grappleDelayTime);
+            }
+            else
+            {
+                grapplePoint = cam.position + cam.forward * maxGrappleDistance;
+
+                Invoke(nameof(StopGrapple), grappleDelayTime);
+            }
+
         }
-        else if (Physics.Raycast(cam.position, cam.forward, out hit, maxGrappleDistance, grapplePull))
-        {
-            grapplePoint = hit.point;
-
-            pullableObject = hit.collider.gameObject;
-
-            Invoke(nameof(ExecuteGrapplePull), grappleDelayTime);
-        }
-        else 
-        {
-            grapplePoint = cam.position + cam.forward * maxGrappleDistance;
-
-            Invoke(nameof(StopGrapple), grappleDelayTime);
-        }
-
         lr.enabled = true;
         lr.SetPosition(1, grapplePoint);
     }
@@ -98,8 +102,8 @@ public class GrappleMovement : MonoBehaviour
     {
         pm.freeze = false;
 
-        pullableObject.GetComponent<GrapplePulling>().pullForce = pullForce;
-        pullableObject.GetComponent<GrapplePulling>().pull = true;
+        grappleObject.GetComponent<GrapplePulling>().pullForce = pullForce;
+        grappleObject.GetComponent<GrapplePulling>().pull = true;
 
         Invoke(nameof(StopGrapple), 1f);
     }
@@ -126,10 +130,10 @@ public class GrappleMovement : MonoBehaviour
         grappling = false;
         grapplingCdTimer = grapplingCd;
         lr.enabled = false;
-        if (pullableObject != null)
+        if (grappleObject != null)
         {
-            pullableObject.GetComponent<GrapplePulling>().pull = false;
-            pullableObject = null;
+            grappleObject.GetComponent<GrapplePulling>().pull = false;
+            grappleObject = null;
         }
     }
 
