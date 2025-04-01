@@ -19,6 +19,10 @@ public class GrappleMovement : MonoBehaviour
 
     private Vector3 grapplePoint;
 
+    [Header("Pulling")]
+    public float pullForce = 25f;
+    public GameObject pullableObject;
+
     [Header("Cooldown")]
     public float grapplingCd;
     private float grapplingCdTimer;
@@ -75,6 +79,8 @@ public class GrappleMovement : MonoBehaviour
         {
             grapplePoint = hit.point;
 
+            pullableObject = hit.collider.gameObject;
+
             Invoke(nameof(ExecuteGrapplePull), grappleDelayTime);
         }
         else 
@@ -91,6 +97,11 @@ public class GrappleMovement : MonoBehaviour
     private void ExecuteGrapplePull() 
     {
         pm.freeze = false;
+
+        pullableObject.GetComponent<GrapplePulling>().pullForce = pullForce;
+        pullableObject.GetComponent<GrapplePulling>().pull = true;
+
+        Invoke(nameof(StopGrapple), 1f);
     }
 
     private void ExecuteGrappleLaunch() 
@@ -115,6 +126,11 @@ public class GrappleMovement : MonoBehaviour
         grappling = false;
         grapplingCdTimer = grapplingCd;
         lr.enabled = false;
+        if (pullableObject != null)
+        {
+            pullableObject.GetComponent<GrapplePulling>().pull = false;
+            pullableObject = null;
+        }
     }
 
     public bool IsGrappling()
