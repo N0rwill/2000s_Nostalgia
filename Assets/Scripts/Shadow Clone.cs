@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ShadowClone : MonoBehaviour
@@ -13,8 +14,9 @@ public class ShadowClone : MonoBehaviour
     public GameObject shadow;
     //public Animator shadowAnim;
 
+    public GameObject start;
     private bool created;
-    public GameObject creationFx;
+    //public GameObject creationFx;
     //private string savedAnim;
 
 
@@ -38,22 +40,39 @@ public class ShadowClone : MonoBehaviour
         if(actDelay < delayStart)
         {
             actDelay += Time.deltaTime;
+            //start shadow
             if (actDelay > delayStart)
             { 
                 shadow.SetActive(true);
-                //SetShadowPos(playerPositions[0]);
-                if (creationFx)
+                //place shadow
+                SetShadowPos(playerPositions[0]);
+                //create visual fx
+                if (true)
                 {
-                    GameObject fx = Instantiate(creationFx, playerPositions[0].position, Quaternion.identity);
+                    GameObject fx = Instantiate(start, playerPositions[0].position, Quaternion.identity);
                     fx.SetActive(true);
                 }
             }
             return;
         }
+        
+        //set info
         PositionInfo setInfo = playerPositions[0];
+        SetShadowPos(setInfo);
+        //SetShadowAnimation(setInfo);
+        playerPositions.RemoveAt(0);
 
 
     }
+
+    void SetShadowPos(PositionInfo setInfo)
+    {
+        shadow.transform.position = setInfo.position;
+        shadow.transform.rotation = setInfo.rotation;
+        shadow.transform.localScale = setInfo.scale;
+
+    }
+
 
     void Update()
     {
