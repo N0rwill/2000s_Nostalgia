@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private float moveSpeed;
     public float walkSpeed;
     public float sprintSpeed;
+    public float wheelySpeed;
 
     public float GroundDrag;
 
@@ -25,6 +26,9 @@ public class PlayerMovement : MonoBehaviour
     public float fallMultiplierTransitionSpeed = 2f;
     private float fallTimer = 0f;
     public float maxFallSpeed = 30f;
+
+    [Header("Wheely")]
+    public bool hasWheely;
 
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
@@ -116,6 +120,12 @@ public class PlayerMovement : MonoBehaviour
             state = MovementState.freeze;
             moveSpeed = 0;
             rb.velocity = Vector3.zero;
+        }
+        // state wheely
+        else if (hasWheely && isGrounded && Input.GetKey(sprintKey) && verticalInput > 0)
+        {
+            state = MovementState.sprinting;
+            moveSpeed = wheelySpeed;
         }
         // state springing
         else if (isGrounded && Input.GetKey(sprintKey))
