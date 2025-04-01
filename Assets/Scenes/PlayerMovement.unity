@@ -480,10 +480,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0986056be60c5b746a3d7bc9669c946f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 1499799879}
   delayStart: 2
   shadow: {fileID: 107131662}
-  orientation: {fileID: 236820811}
+  distanceToPlayer: 0
   start: {fileID: 1533867182}
 --- !u!1 &121268713
 GameObject:
@@ -904,11 +904,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 157300521}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &236820811 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4072613709060273250, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
-  m_PrefabInstance: {fileID: 7596002979155714247}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &237332089
 GameObject:
   m_ObjectHideFlags: 0
@@ -1094,7 +1089,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &243212077
 AudioListener:
   m_ObjectHideFlags: 0

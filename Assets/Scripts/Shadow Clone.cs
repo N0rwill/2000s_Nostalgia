@@ -13,6 +13,7 @@ public class ShadowClone : MonoBehaviour
 
     public GameObject shadow;
     //public Animator shadowAnim;
+    public float distanceToPlayer;
 
     public GameObject start;
     private bool created;
@@ -59,6 +60,11 @@ public class ShadowClone : MonoBehaviour
         PositionInfo setInfo = playerPositions[0];
         SetShadowPos(setInfo);
         //SetShadowAnimation(setInfo);
+
+        distanceToPlayer = Vector3.Distance(player.transform.position, shadow.transform.position);
+
+        Caught(player.transform.position);
+
         playerPositions.RemoveAt(0);
 
 
@@ -79,6 +85,16 @@ public class ShadowClone : MonoBehaviour
     void Update()
     {
         
+        
+    }
+
+    void Caught(Vector3 playerPosition)
+    {
+        if (distanceToPlayer < 1)
+        {
+            
+        }
+
     }
 
     
