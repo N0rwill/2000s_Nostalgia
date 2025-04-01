@@ -22,7 +22,7 @@ public class ShadowClone : MonoBehaviour
 
     void Start()
     {
-        //player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+        
     }
 
     void FixedUpdate()
@@ -30,7 +30,6 @@ public class ShadowClone : MonoBehaviour
         PositionInfo posNew = new PositionInfo
         {
             position = player.transform.position,
-            rotation = player.transform.rotation,
             scale = player.transform.localScale,
             //anim = player.anim.GetCurrentAnimatorClipInfo(0)[0].clip,
         };
@@ -68,8 +67,11 @@ public class ShadowClone : MonoBehaviour
     void SetShadowPos(PositionInfo setInfo)
     {
         shadow.transform.position = setInfo.position;
-        shadow.transform.rotation = setInfo.rotation;
         shadow.transform.localScale = setInfo.scale;
+
+        Vector3 direction2Player = (player.transform.position - shadow.transform.position).normalized;
+        shadow.transform.rotation = Quaternion.LookRotation(direction2Player);
+        
 
     }
 
@@ -87,7 +89,6 @@ public class PositionInfo
 {
     //position info
     public Vector3 position;
-    public Quaternion rotation;
     public Vector3 scale;
     //public AnimationClip anim;
 }

@@ -483,6 +483,7 @@ MonoBehaviour:
   player: {fileID: 0}
   delayStart: 2
   shadow: {fileID: 107131662}
+  orientation: {fileID: 236820811}
   start: {fileID: 1533867182}
 --- !u!1 &121268713
 GameObject:
@@ -903,6 +904,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 157300521}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &236820811 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4072613709060273250, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
+  m_PrefabInstance: {fileID: 7596002979155714247}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &237332089
 GameObject:
   m_ObjectHideFlags: 0
