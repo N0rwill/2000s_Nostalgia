@@ -892,7 +892,7 @@ GameObject:
   - component: {fileID: 127216193921079193}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -959,6 +959,7 @@ MonoBehaviour:
   activeGrapple: 0
   walkSpeed: 7
   sprintSpeed: 10
+  wheelySpeed: 0
   GroundDrag: 5
   jumpForce: 10.5
   jumpCooldown: 0.25
@@ -966,6 +967,7 @@ MonoBehaviour:
   fallMultiplier: 1.5
   fallMultiplierTransitionSpeed: 3
   maxFallSpeed: 30
+  hasWheely: 0
   jumpKey: 32
   sprintKey: 304
   playerHeight: 2
@@ -1000,7 +1002,7 @@ MonoBehaviour:
   maxGrappleDistance: 50
   grappleDelayTime: 0.25
   overshootYAxis: 2
-  pullForce: 25
+  pullForce: 200
   pullableObject: {fileID: 0}
   grapplingCd: 1
   grappleKey: 324
@@ -2688,7 +2690,7 @@ Transform:
   m_GameObject: {fileID: 5751141341592308918}
   serializedVersion: 2
   m_LocalRotation: {x: 0.20759155, y: -0.00000006779793, z: 0.000000014387702, w: 0.97821563}
-  m_LocalPosition: {x: 0, y: 2.0288887, z: -3.439999}
+  m_LocalPosition: {x: 0.00000047683716, y: 2.0288887, z: -3.439999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
