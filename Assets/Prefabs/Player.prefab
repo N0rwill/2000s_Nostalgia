@@ -485,14 +485,14 @@ Transform:
   m_GameObject: {fileID: 1398658186743451096}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.5, z: -4.5}
+  m_LocalPosition: {x: -1.0453511, y: 0.5950655, z: -3.6619034}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1562748718245750511}
   - {fileID: 1638987729872882211}
   - {fileID: 1536835094194971002}
-  m_Father: {fileID: 8238797604540052688}
+  m_Father: {fileID: 7435943160889100705}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4400819276137788519
 MonoBehaviour:
@@ -912,8 +912,7 @@ Transform:
   m_Children:
   - {fileID: 7129646974297731326}
   - {fileID: 4072613709060273250}
-  - {fileID: 6651822304707676922}
-  - {fileID: 2876945243933068697}
+  - {fileID: 7435943160889100705}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &3814564959684164769
@@ -955,27 +954,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3079bbc39ca8483499ccad2eb0bd792d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  freeze: 0
-  activeGrapple: 0
   walkSpeed: 7
   sprintSpeed: 10
   wheelySpeed: 0
+  speedTransitionSpeed: 10
   GroundDrag: 5
+  hasWheely: 0
   jumpForce: 10.5
   jumpCooldown: 0.25
   airMultiplier: 1.5
   fallMultiplier: 1.5
   fallMultiplierTransitionSpeed: 3
   maxFallSpeed: 30
-  hasWheely: 0
   jumpKey: 32
   sprintKey: 304
+  slowKey: 306
+  slowDownCooldown: 0
   playerHeight: 2
   groundMask:
     serializedVersion: 2
     m_Bits: 64
   isGrounded: 0
   maxSlopeAngle: 44
+  hasGrapple: 0
+  freeze: 0
+  activeGrapple: 0
   orientation: {fileID: 4072613709060273250}
   state: 0
 --- !u!114 &127216193921079193
@@ -992,18 +995,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 6651822304707676922}
   stickyhand: {fileID: 5854356478060565689}
-  grapplePull:
+  grapple:
     serializedVersion: 2
-    m_Bits: 128
-  grappleLaunch:
-    serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 0
   lr: {fileID: 4112217916060168878}
   maxGrappleDistance: 50
   grappleDelayTime: 0.25
   overshootYAxis: 2
+  grappleObject: {fileID: 0}
   pullForce: 200
-  pullableObject: {fileID: 0}
   grapplingCd: 1
   grappleKey: 324
 --- !u!1 &2299053188174635388
@@ -2690,11 +2690,11 @@ Transform:
   m_GameObject: {fileID: 5751141341592308918}
   serializedVersion: 2
   m_LocalRotation: {x: 0.20759155, y: -0.00000006779793, z: 0.000000014387702, w: 0.97821563}
-  m_LocalPosition: {x: 0.00000047683716, y: 2.0288887, z: -3.439999}
+  m_LocalPosition: {x: -1.0453507, y: 0.12395418, z: -2.6019025}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8238797604540052688}
+  m_Father: {fileID: 7435943160889100705}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &7153127179371428455
 Camera:
@@ -2806,6 +2806,8 @@ MonoBehaviour:
   playerObj: {fileID: 7129646974297731326}
   rb: {fileID: 3814564959684164769}
   rotationSpeed: 15
+  combatLookAt: {fileID: 0}
+  currentStyle: 0
 --- !u!1 &6023416471878281679
 GameObject:
   m_ObjectHideFlags: 0
@@ -3697,6 +3699,39 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &7710838153496379712
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7435943160889100705}
+  m_Layer: 0
+  m_Name: Cams
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7435943160889100705
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7710838153496379712}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.0453511, y: 1.9049345, z: -0.8380966}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6651822304707676922}
+  - {fileID: 2876945243933068697}
+  m_Father: {fileID: 8238797604540052688}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8424568837789558429
 GameObject:
   m_ObjectHideFlags: 0
