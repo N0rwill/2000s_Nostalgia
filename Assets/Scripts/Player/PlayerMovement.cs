@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isSprinting;
 
     [Header("Wheely")]
-    public bool hasWheely;
+    public bool hasWheely = false;
     private bool isWheelying;
 
     [Header("Jump")]
@@ -51,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
     private bool exitingSlope;
 
     [Header("Grapple Mechanics")]
+    public bool hasGrapple = false;
     public bool freeze;
     public bool activeGrapple;
 
@@ -82,6 +83,9 @@ public class PlayerMovement : MonoBehaviour
         // settings on start
         canJump = true;
         canSlowDown = true;
+
+        hasGrapple = false;
+        hasWheely = false;
 
         moveSpeed = walkSpeed;
         currentTargetSpeed = walkSpeed;

@@ -38,13 +38,13 @@ public class GrappleMovement : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(grappleKey)) 
-        { 
+        if (Input.GetKeyDown(grappleKey))
+        {
             StartGrapple();
         }
 
-        if (grapplingCdTimer > 0) 
-        { 
+        if (grapplingCdTimer > 0)
+        {
             grapplingCdTimer -= Time.deltaTime;
         }
     }
@@ -70,7 +70,7 @@ public class GrappleMovement : MonoBehaviour
             if (hit.collider.gameObject.CompareTag("GrappleLaunch"))
             {
                 pm.freeze = true;
-                
+
                 grapplePoint = hit.point;
 
                 grappleObject = hit.collider.gameObject;
