@@ -9,13 +9,11 @@ public class GrapplePulling : MonoBehaviour
     public float pullForce;
     private Rigidbody rigidbody;
 
-    // Start is called before the first frame update
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         if (pull == true) 

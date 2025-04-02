@@ -31,13 +31,11 @@ public class GrappleMovement : MonoBehaviour
 
     private bool grappling;
 
-    // Start is called before the first frame update
     void Start()
     {
         pm = GetComponent<PlayerMovement>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(grappleKey)) 

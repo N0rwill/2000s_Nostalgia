@@ -6,33 +6,39 @@ using UnityEngine.Experimental.GlobalIllumination;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public bool freeze;
-    public bool activeGrapple;
-
     [Header("Movement")]
     private float moveSpeed;
     public float walkSpeed;
     public float sprintSpeed;
     public float wheelySpeed;
+    public float speedTransitionSpeed = 10f;
+    private float currentTargetSpeed;
 
     public float GroundDrag;
+
+    [Header("Sprint")]
+    private bool isSprinting;
+
+    [Header("Wheely")]
+    public bool hasWheely;
+    private bool isWheelying;
 
     [Header("Jump")]
     public float jumpForce;
     public float jumpCooldown;
     public float airMultiplier;
-    bool canJump;
-    public float fallMultiplier = 1.2f;
-    public float fallMultiplierTransitionSpeed = 2f;
+    private bool canJump;
+    public float fallMultiplier;
+    public float fallMultiplierTransitionSpeed;
     private float fallTimer = 0f;
-    public float maxFallSpeed = 30f;
-
-    [Header("Wheely")]
-    public bool hasWheely;
+    public float maxFallSpeed;
 
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
     public KeyCode sprintKey = KeyCode.LeftShift;
+    public KeyCode slowKey = KeyCode.LeftControl;
+    private bool canSlowDown;
+    public float slowDownCooldown;
 
     [Header("gruond Check")]
     public float playerHeight;
@@ -43,6 +49,10 @@ public class PlayerMovement : MonoBehaviour
     public float maxSlopeAngle;
     private RaycastHit slopeHit;
     private bool exitingSlope;
+
+    [Header("Grapple Mechanics")]
+    public bool freeze;
+    public bool activeGrapple;
 
     public Transform orientation;
 
@@ -60,6 +70,7 @@ public class PlayerMovement : MonoBehaviour
         freeze,
         walking,
         sprinting,
+        wheelying,
         air
     }
 
@@ -68,7 +79,15 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
+        // settings on start
         canJump = true;
+        canSlowDown = true;
+
+        moveSpeed = walkSpeed;
+        currentTargetSpeed = walkSpeed;
+
+        isSprinting = false;
+        isWheelying = false;
     }
 
     private void Update()
@@ -81,6 +100,8 @@ public class PlayerMovement : MonoBehaviour
         StateHandler();
         ApplyFallMultiplier();
         ClampFallSpeed();
+
+        PlayerActiveSpeed();
 
         // drag handler
         if (isGrounded && !activeGrapple)
@@ -110,6 +131,45 @@ public class PlayerMovement : MonoBehaviour
             Jump();
             Invoke(nameof(ResetJump), jumpCooldown);
         }
+
+        // speed progression: walking -> sprinting -> wheelying
+        if (Input.GetKeyDown(sprintKey))
+        {
+            if (!isSprinting && !isWheelying)
+            {
+                // Start sprinting
+                isSprinting = true;
+            }
+            else if (isSprinting && hasWheely)
+            {
+                // Start wheelying
+                isWheelying = true;
+                isSprinting = false;
+            }
+        }
+        // Handle slow key
+        else if (Input.GetKeyDown(slowKey) && canSlowDown)
+        {
+            if (isWheelying)
+            {
+                // wheely -> sprint
+                isWheelying = false;
+                isSprinting = true;
+                Invoke(nameof(ResetSlowDownKey), slowDownCooldown);
+            }
+            else if (isSprinting)
+            {
+                // sprint -> walk
+                isSprinting = false;
+                Invoke(nameof(ResetSlowDownKey), slowDownCooldown);
+            }
+        }
+        // Reset to walking if no movement
+        else if (verticalInput <= 0)
+        {
+            isSprinting = false;
+            isWheelying = false;
+        }
     }
 
     private void StateHandler()
@@ -118,26 +178,30 @@ public class PlayerMovement : MonoBehaviour
         if (freeze)
         {
             state = MovementState.freeze;
-            moveSpeed = 0;
+            currentTargetSpeed = 0;
             rb.velocity = Vector3.zero;
+            Debug.Log("Player is frozen");
         }
         // state wheely
-        else if (hasWheely && isGrounded && Input.GetKey(sprintKey) && verticalInput > 0)
+        else if (isWheelying)
         {
-            state = MovementState.sprinting;
-            moveSpeed = wheelySpeed;
+            state = MovementState.wheelying;
+            currentTargetSpeed = wheelySpeed;
+            Debug.Log("Player is wheelying");
         }
-        // state springing
-        else if (isGrounded && Input.GetKey(sprintKey))
+        // state sprinting
+        else if (isSprinting)
         {
             state = MovementState.sprinting;
-            moveSpeed = sprintSpeed;
+            currentTargetSpeed = sprintSpeed;
+            Debug.Log("Player is sprinting");
         }
         // state walking
         else if (isGrounded)
         {
             state = MovementState.walking;
-            moveSpeed = walkSpeed;
+            currentTargetSpeed = walkSpeed;
+            Debug.Log("Player is walking");
         }
         // state air
         else if (!isGrounded)
@@ -151,7 +215,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void MovePlayer()
     {
-        //Can't move if grappling
+        // Can't move if grappling
         if (activeGrapple) return;
 
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
@@ -184,26 +248,29 @@ public class PlayerMovement : MonoBehaviour
 
     private void SpeedContorl()
     {
-        //Can't move if grappling
+        // Can't move if grappling
         if (activeGrapple) return;
+
+        // Smoothly transition to target speed
+        moveSpeed = Mathf.Lerp(moveSpeed, currentTargetSpeed, Time.deltaTime * speedTransitionSpeed);
 
         // limit speed on slope
         if (OnSlope() && !exitingSlope)
         {
             if (rb.velocity.magnitude > moveSpeed)
-                rb.velocity = rb.velocity.normalized * moveSpeed;
+                rb.velocity = Vector3.Lerp(rb.velocity, rb.velocity.normalized * moveSpeed, Time.deltaTime * speedTransitionSpeed);
         }
 
         // limit speed on ground or in air
         else
         {
-            Vector3 flaVelocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+            Vector3 flatVelocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
 
             // limit velocity if needed
-            if (flaVelocity.magnitude > moveSpeed)
+            if (flatVelocity.magnitude > moveSpeed)
             {
-                Vector3 limitedVelocity = flaVelocity.normalized * moveSpeed;
-                rb.velocity = new Vector3(limitedVelocity.x, rb.velocity.y, limitedVelocity.z);
+                Vector3 limitedVelocity = flatVelocity.normalized * moveSpeed;
+                rb.velocity = Vector3.Lerp(rb.velocity, new Vector3(limitedVelocity.x, rb.velocity.y, limitedVelocity.z), Time.deltaTime * speedTransitionSpeed);
             }
         }
     }
@@ -219,8 +286,12 @@ public class PlayerMovement : MonoBehaviour
     private void ResetJump()
     {
         canJump = true;
-
         exitingSlope = false;
+    }
+
+    private void ResetSlowDownKey()
+    {
+        canSlowDown = true;
     }
 
     private bool OnSlope()
@@ -279,9 +350,16 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.DrawRay(rayOrigin, rayDirection);
     }
 
+    public void PlayerActiveSpeed()
+    {
+        // calculate the speed of the player
+        float speed = rb.velocity.magnitude;
+        Debug.Log("Player is moving at " + speed + "m/s");
+    }
 
 
-    //GRAPPLE MECHANICS
+
+    // GRAPPLE MECHANICS
     private bool enableMovementOnNextTouch;
 
     public void LaunchToPosition(Vector3 targetPosition, float trajectoryHeight)
@@ -318,7 +396,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    //Kinematic equasion for the Grapple Launch mechanic launch distance
+    // Kinematic equasion for the Grapple Launch mechanic launch distance
     public Vector3 CalculateLaunchVelocity(Vector3 startPoint, Vector3 endPoint, float trajectoryHeight)
     {
         float gravity = Physics.gravity.y;

@@ -7,6 +7,7 @@ public class OpenDoor : MonoBehaviour
     public bool IsOpen = false;
     [SerializeField] private bool IsRotatingDoor = true;
     [SerializeField] private float speed = 1f;
+    
     [Header("Rotation Configs")]
     [SerializeField] private float RotationAmount = 90f;
     public GameObject gate;

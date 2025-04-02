@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class DoorInteractionScript : MonoBehaviour
 {
-    [SerializeField]
-    private Transform Camera;
-    [SerializeField]
-    private float MaxUseDistance = 5f;
-    [SerializeField]
-    private LayerMask UseLayers;
-
-
-
+    [SerializeField] private Transform Camera;
+    [SerializeField] private float MaxUseDistance = 5f;
+    [SerializeField] private LayerMask UseLayers;
 
     private void Update()
     {
@@ -34,5 +28,14 @@ public class DoorInteractionScript : MonoBehaviour
             }
         }
 
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (Camera != null)
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawRay(Camera.position, Camera.forward * MaxUseDistance);
+        }
     }
 }
