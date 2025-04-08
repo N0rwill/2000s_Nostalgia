@@ -4,15 +4,7 @@ using UnityEngine;
 
 public class LeverPull : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private GameObject lever;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
