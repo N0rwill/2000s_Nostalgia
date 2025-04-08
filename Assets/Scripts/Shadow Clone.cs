@@ -47,11 +47,11 @@ public class ShadowClone : MonoBehaviour
                 //place shadow
                 SetShadowPos(playerPositions[0]);
                 //create visual fx
-                if (true)
+                /*if (true)
                 {
                     GameObject fx = Instantiate(start, playerPositions[0].position, Quaternion.identity);
                     fx.SetActive(true);
-                }
+                }*/
             }
             return;
         }
