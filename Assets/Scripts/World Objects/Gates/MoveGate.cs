@@ -6,6 +6,8 @@ public class MoveGate : MonoBehaviour
 {
     [SerializeField] private GameObject gate;
 
+    public bool isOpen = false;
+
     void Start()
     {
         Vector3 newPosition = gate.transform.position;
@@ -18,6 +20,7 @@ public class MoveGate : MonoBehaviour
         Vector3 newPosition = gate.transform.position;
         newPosition.y = 0.7f;
         gate.transform.position = newPosition;
+        isOpen = true;
     }
     
     public void Close()
@@ -25,5 +28,6 @@ public class MoveGate : MonoBehaviour
         Vector3 newPosition = gate.transform.position;
         newPosition.y = 0.25f;
         gate.transform.position = newPosition;
+        isOpen = false;
     }
 }

@@ -14,15 +14,15 @@ public class DoorInteractionScript : MonoBehaviour
         {
             if (Physics.Raycast(Camera.position, Camera.forward, out RaycastHit hit, MaxUseDistance, UseLayers))
             {
-                if (hit.collider.TryGetComponent<OpenDoor>(out OpenDoor door))
+                if (hit.collider.TryGetComponent<MoveGate>(out MoveGate moveGate))
                 {
-                    if (door.IsOpen)
+                    if (moveGate.isOpen)
                     {
-                        door.Close();
+                        moveGate.Close();
                     }
                     else
                     {
-                        door.Open(transform.position);
+                        moveGate.Open();
                     }
                 }
             }
