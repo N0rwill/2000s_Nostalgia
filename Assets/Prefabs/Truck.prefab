@@ -64,9 +64,41 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 71d4907537d09b14eb87fc4ee610c109, type: 2}
+    - target: {fileID: -4502144625357562920, guid: 7c8bb935efef52b418f113d805ba2293, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -4502144625357562920, guid: 7c8bb935efef52b418f113d805ba2293, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -4502144625357562920, guid: 7c8bb935efef52b418f113d805ba2293, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4502144625357562920, guid: 7c8bb935efef52b418f113d805ba2293, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 7c8bb935efef52b418f113d805ba2293, type: 3}
       propertyPath: m_Name
-      value: truck_low
+      value: Truck
+      objectReference: {fileID: 0}
+    - target: {fileID: 1415025858585455605, guid: 7c8bb935efef52b418f113d805ba2293, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1415025858585455605, guid: 7c8bb935efef52b418f113d805ba2293, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1415025858585455605, guid: 7c8bb935efef52b418f113d805ba2293, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1415025858585455605, guid: 7c8bb935efef52b418f113d805ba2293, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 5263567996397136696, guid: 7c8bb935efef52b418f113d805ba2293, type: 3}
       propertyPath: m_Materials.Array.data[0]

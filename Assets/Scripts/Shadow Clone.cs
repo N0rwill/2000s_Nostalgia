@@ -20,14 +20,9 @@ public class ShadowClone : MonoBehaviour
     //public GameObject creationFx;
     //private string savedAnim;
 
-
-    void Start()
-    {
-        
-    }
-
     void FixedUpdate()
     {
+        //array set for shadow position
         PositionInfo posNew = new PositionInfo
         {
             position = player.transform.position,
@@ -37,6 +32,7 @@ public class ShadowClone : MonoBehaviour
 
         playerPositions.Add(posNew);
 
+        //delay
         if(actDelay < delayStart)
         {
             actDelay += Time.deltaTime;
@@ -61,8 +57,8 @@ public class ShadowClone : MonoBehaviour
         SetShadowPos(setInfo);
         //SetShadowAnimation(setInfo);
 
+        
         distanceToPlayer = Vector3.Distance(player.transform.position, shadow.transform.position);
-
         Caught(player.transform.position);
 
         playerPositions.RemoveAt(0);
@@ -72,21 +68,16 @@ public class ShadowClone : MonoBehaviour
 
     void SetShadowPos(PositionInfo setInfo)
     {
+        //setting shadow position
         shadow.transform.position = setInfo.position;
         shadow.transform.localScale = setInfo.scale;
 
+        //check distance
         Vector3 direction2Player = (player.transform.position - shadow.transform.position).normalized;
         shadow.transform.rotation = Quaternion.LookRotation(direction2Player);
         
-
     }
 
-
-    void Update()
-    {
-        
-        
-    }
 
     void Caught(Vector3 playerPosition)
     {
