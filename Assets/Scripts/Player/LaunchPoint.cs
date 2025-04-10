@@ -4,17 +4,16 @@ using UnityEngine;
 
 public class LaunchPoint : MonoBehaviour
 {
-    public Vector3 launchPoint;
     public GameObject launchObject; //Where to get launchPoint from
 
     [Header("POV and Lock On Test")]
     [SerializeField] private Camera lockOnCam;
     Plane[] planes;
     Collider objCollider;
-    GameObject player;
+    public GameObject player;
     private void Start()
     {
-        launchPoint = launchObject.transform.position; //transfer position to Vector
+         
 
         objCollider = GetComponent<Collider>();
     }
@@ -27,6 +26,8 @@ public class LaunchPoint : MonoBehaviour
             Debug.Log(name + " has been detected!");
             player.GetComponent<GrappleMovement>().canSeeGrapple = true;
             player.GetComponent<GrappleMovement>().grappleObject = gameObject;
+            player.GetComponent<GrappleMovement>().grapplePoint = transform.position;
+            player.GetComponent<GrappleMovement>().launchToPoint = launchObject.transform.position; //transfer position to Vector3
         }
         else
         {

@@ -18,7 +18,7 @@ public class GrappleMovement : MonoBehaviour
     public float overshootYAxis;
     public GameObject grappleObject;
 
-    private Vector3 grapplePoint;
+    public Vector3 grapplePoint;
     public Vector3 launchToPoint;
 
     [Header("Pulling")]
@@ -88,19 +88,11 @@ public class GrappleMovement : MonoBehaviour
 
         else if (canSeeGrapple)
         {
-            if (Physics.Raycast(cam.position, cam.forward, out hit, maxGrappleDistance, grapple))
-            {
-
                 pm.freeze = true; //freeze the player for dramatic effect
 
-                grapplePoint = hit.point; //point where the grapple hits
-
-                launchToPoint = hit.collider.gameObject.GetComponent<LaunchPoint>().launchPoint; //point where the player will fly to.
-
-                grappleObject = hit.collider.gameObject; //GameObject that the player hit.
+            Debug.Log("LAUNCHING");
 
                 Invoke(nameof(ExecuteGrappleLaunch), grappleDelayTime);
-            }
         }
 
         else
