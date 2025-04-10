@@ -18,6 +18,7 @@ public class GrapplePulling : MonoBehaviour
     {
         if (pull == true) 
         {
+            //If the player grapples the object, move the object toward the player.
             Vector3 direction = (player.transform.position - transform.position).normalized;
             rigidbody.AddForce(direction * pullForce);
         }
