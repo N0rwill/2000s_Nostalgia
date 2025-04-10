@@ -24,12 +24,20 @@ public class Waypoint : MonoBehaviour
         Gizmos.DrawLine(transform.GetChild(transform.childCount - 1).position, transform.GetChild(0).position);
     }
 
-    public Transform GetNextWaypoint(Transform currentWaypoint)
+    public Transform GetNextWaypoint(Transform currentWaypoint, GameObject movingObject)
     {
         //go to first waypoint
         if (currentWaypoint == null)
         {
             return transform.GetChild(0);
+        }
+        if (movingObject.CompareTag("Chase"))
+        {
+            // If it's the last waypoint, go back to the first waypoint
+            if (currentWaypoint.GetSiblingIndex() >= transform.childCount - 1)
+            {
+                return null;
+            }
         }
         if (currentWaypoint.GetSiblingIndex() < transform.childCount - 1)
         {

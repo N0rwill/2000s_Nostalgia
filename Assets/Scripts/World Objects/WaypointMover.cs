@@ -19,11 +19,11 @@ public class WaypointMover : MonoBehaviour
     void Start()
     {
         //set initial position
-        currentWaypoint = waypoints.GetNextWaypoint(currentWaypoint);
+        currentWaypoint = waypoints.GetNextWaypoint(currentWaypoint, gameObject);
         transform.position = currentWaypoint.position;
 
         //Set next target
-        currentWaypoint = waypoints.GetNextWaypoint(currentWaypoint);
+        currentWaypoint = waypoints.GetNextWaypoint(currentWaypoint, gameObject);
         
 
     }
@@ -34,8 +34,8 @@ public class WaypointMover : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, currentWaypoint.position, moveSpeed * Time.deltaTime);
         if (Vector3.Distance(transform.position, currentWaypoint.position) < distanceThreshold)
         {
-            currentWaypoint = waypoints.GetNextWaypoint(currentWaypoint);
-            //transform.LookAt(currentWaypoint);
+            currentWaypoint = waypoints.GetNextWaypoint(currentWaypoint, gameObject);
+            
         }
 
         // Smoothly rotate towards the current waypoint
