@@ -105,7 +105,7 @@ public class PlayerMovement : MonoBehaviour
         ApplyFallMultiplier();
         ClampFallSpeed();
 
-        PlayerActiveSpeed();
+        //PlayerActiveSpeed();
 
         // drag handler
         if (isGrounded && !activeGrapple)
@@ -191,21 +191,21 @@ public class PlayerMovement : MonoBehaviour
         {
             state = MovementState.wheelying;
             currentTargetSpeed = wheelySpeed;
-            Debug.Log("Player is wheelying");
+            // Debug.Log("Player is wheelying");
         }
         // state sprinting
         else if (isSprinting)
         {
             state = MovementState.sprinting;
             currentTargetSpeed = sprintSpeed;
-            Debug.Log("Player is sprinting");
+            // Debug.Log("Player is sprinting");
         }
         // state walking
         else if (isGrounded)
         {
             state = MovementState.walking;
             currentTargetSpeed = walkSpeed;
-            Debug.Log("Player is walking");
+            // Debug.Log("Player is walking");
         }
         // state air
         else if (!isGrounded)
@@ -354,12 +354,12 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.DrawRay(rayOrigin, rayDirection);
     }
 
-    public void PlayerActiveSpeed()
+    /*public void PlayerActiveSpeed()
     {
         // calculate the speed of the player
         float speed = rb.velocity.magnitude;
         Debug.Log("Player is moving at " + speed + "m/s");
-    }
+    }*/
 
 
 

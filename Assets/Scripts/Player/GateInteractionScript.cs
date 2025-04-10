@@ -8,7 +8,7 @@ public class DoorInteractionScript : MonoBehaviour
     [SerializeField] private float MaxUseDistance = 5f;
     [SerializeField] private LayerMask UseLayers;
 
-    private void Update()
+    /*private void Update()
     {
         if (Input.GetButtonDown("Use"))
         {
@@ -37,5 +37,5 @@ public class DoorInteractionScript : MonoBehaviour
             Gizmos.color = Color.yellow;
             Gizmos.DrawRay(Camera.position, Camera.forward * MaxUseDistance);
         }
-    }
+    }*/
 }
