@@ -74,7 +74,16 @@ public class GrappleMovement : MonoBehaviour
 
         RaycastHit hit;
 
-        if (Physics.Raycast(cam.position, cam.forward, out hit, maxGrappleDistance, grapple)) //sends out a raycast to see if it hits a launch object, a pull object, or nothing.
+        if (canSeeGrapple)
+        {
+            pm.freeze = true; //freeze the player for dramatic effect
+
+            Debug.Log("LAUNCHING");
+
+            Invoke(nameof(ExecuteGrappleLaunch), grappleDelayTime);
+        }
+
+        else if (Physics.Raycast(cam.position, cam.forward, out hit, maxGrappleDistance, grapple)) //sends out a raycast to see if it hits a launch object, a pull object, or nothing.
         {
             if (hit.collider.gameObject.CompareTag("GrapplePull"))
             {
@@ -86,15 +95,6 @@ public class GrappleMovement : MonoBehaviour
             }
         }
 
-        else if (canSeeGrapple)
-        {
-                pm.freeze = true; //freeze the player for dramatic effect
-
-            Debug.Log("LAUNCHING");
-
-                Invoke(nameof(ExecuteGrappleLaunch), grappleDelayTime);
-        }
-
         else
         {
             grapplePoint = cam.position + cam.forward * maxGrappleDistance; //If the player misses anything, just put the grapple out the max distance
@@ -102,7 +102,6 @@ public class GrappleMovement : MonoBehaviour
             Invoke(nameof(StopGrapple), grappleDelayTime); //And then stop the grapple.
         }
 
-        
         lr.enabled = true;
         lr.SetPosition(1, grapplePoint); //Create a line renderer for the grapple, launching it out to the point the player connects with, or max distance.
     }
@@ -141,12 +140,20 @@ public class GrappleMovement : MonoBehaviour
         grappling = false;
         grapplingCdTimer = grapplingCd;
         lr.enabled = false;
-        if (grappleObject != null)
+        
+        if (grappleObject.GetComponent<GrapplePulling>() != null)
         {
             grappleObject.GetComponent<GrapplePulling>().pull = false;
             grappleObject.GetComponent<GrapplePulling>().pullForce = 0;
             grappleObject = null;
         }
+
+        else if (grappleObject = null)
+        {
+            return;
+        }
+
+        else { return; }
     }
 
     public bool IsGrappling()
