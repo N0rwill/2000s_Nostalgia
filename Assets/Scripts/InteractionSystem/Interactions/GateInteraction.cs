@@ -62,7 +62,7 @@ public class GateInteraction : MonoBehaviour, IInteractable
         while (elapsedTime < 1f)
         {
             elapsedTime += Time.deltaTime * leverMoveSpeed;
-            leverTransform.rotation = Quaternion.Lerp(Quaternion.Euler(start), Quaternion.Euler(end), elapsedTime);
+            leverTransform.localRotation = Quaternion.Lerp(Quaternion.Euler(start), Quaternion.Euler(end), elapsedTime);
             yield return null;
         }
     }
