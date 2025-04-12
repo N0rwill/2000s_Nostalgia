@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class WaterWheelRotate : MonoBehaviour
 {
-    private void Update()
+    private void FixedUpdate()
     {
-        transform.Rotate(-20 * Time.deltaTime, 0, 0);
+        transform.Rotate(-1, 0, 0);
     }
 }
