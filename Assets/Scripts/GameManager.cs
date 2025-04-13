@@ -36,6 +36,12 @@ public class GameManager : MonoBehaviour
         Debug.Log("Returned to Menu.");
     }
 
+    public void WaterLevel()
+    {
+        SceneManager.LoadScene("WaterLevel");
+        Debug.Log("Water Table Level Loaded.");
+    }
+
     public void Pause(bool paused)
     {
         if (paused == false)
