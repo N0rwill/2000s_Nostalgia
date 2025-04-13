@@ -30,12 +30,6 @@ public class GameManager : MonoBehaviour
         Debug.Log("Application has quit.");
     }
 
-    public void ReturnToMenu()
-    {
-        SceneManager.LoadScene("Start");
-        Debug.Log("Returned to Menu.");
-    }
-
     public void Pause(bool paused)
     {
         if (paused == false)
