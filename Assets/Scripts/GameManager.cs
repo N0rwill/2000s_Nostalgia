@@ -24,6 +24,12 @@ public class GameManager : MonoBehaviour
         Debug.Log("Start game.");
     }
 
+    public void QuitGame()
+    {
+        Application.Quit();
+        Debug.Log("Application has quit.");
+    }
+
     public void Pause(bool paused)
     {
         if (paused == false)
