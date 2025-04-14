@@ -52,7 +52,6 @@ public class PlayerMovement : MonoBehaviour
     public bool activeGrapple;
 
     [Header("Animation")]
-    public Animator animator;
 
     public Transform orientation;
 
