@@ -51,6 +51,9 @@ public class PlayerMovement : MonoBehaviour
     public bool freeze;
     public bool activeGrapple;
 
+    [Header("Animation")]
+    public Animator animator;
+
     public Transform orientation;
 
     float horizontalInput;
@@ -68,6 +71,7 @@ public class PlayerMovement : MonoBehaviour
         walking,
         sprinting,
         wheelying,
+        idle,
         air
     }
 
@@ -125,7 +129,7 @@ public class PlayerMovement : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
 
         // jump
-        if (Input.GetKey(jumpKey) && canJump && isGrounded)
+        if (Input.GetButton("Jump") && canJump && isGrounded)
         {
             canJump = false;
             Jump();
@@ -133,7 +137,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // speed progression: walking -> sprinting -> wheelying
-        if (Input.GetKeyDown(sprintKey))
+        if (Input.GetButtonDown("Run"))
         {
             if (!isSprinting && !isWheelying)
             {
@@ -202,6 +206,11 @@ public class PlayerMovement : MonoBehaviour
             state = MovementState.walking;
             currentTargetSpeed = walkSpeed;
             // Debug.Log("Player is walking");
+        }
+        // idle
+        else if (isGrounded && horizontalInput == 0 && verticalInput == 0)
+        {
+            state = MovementState.idle;
         }
         // state air
         else if (!isGrounded)
