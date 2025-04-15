@@ -13,9 +13,6 @@ AnimatorStateMachine:
     m_State: {fileID: -1516991117676276970}
     m_Position: {x: 820, y: 0, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: -2895217707893974996}
-    m_Position: {x: 330, y: 90, z: 0}
-  - serializedVersion: 1
     m_State: {fileID: 8156383982268333181}
     m_Position: {x: 365, y: 155, z: 0}
   m_ChildStateMachines: []
@@ -24,36 +21,10 @@ AnimatorStateMachine:
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 50, y: 20, z: 0}
-  m_EntryPosition: {x: 50, y: 100, z: 0}
+  m_EntryPosition: {x: 60, y: 90, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: -2895217707893974996}
---- !u!1102 &-2895217707893974996
-AnimatorState:
-  serializedVersion: 6
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Walk
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 1827226128182048838, guid: 482ab7f64f5791a47a03aebfdf18247c, type: 3}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
+  m_DefaultState: {fileID: -1516991117676276970}
 --- !u!1102 &-1516991117676276970
 AnimatorState:
   serializedVersion: 6
