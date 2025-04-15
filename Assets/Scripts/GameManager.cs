@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("HubLevel");
+        SceneManager.LoadScene("WaterLevel");
         Debug.Log("Start game.");
     }
 
