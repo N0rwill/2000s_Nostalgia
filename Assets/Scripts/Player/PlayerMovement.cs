@@ -52,6 +52,7 @@ public class PlayerMovement : MonoBehaviour
     public bool activeGrapple;
 
     [Header("Animation")]
+    public Animator animator;
 
     public Transform orientation;
 
@@ -185,6 +186,14 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = Vector3.zero;
             Debug.Log("Player is frozen");
         }
+        // idle
+        else if (isGrounded && horizontalInput == 0 && verticalInput == 0)
+        {
+            state = MovementState.idle;
+            animator.SetBool("isIdle", true);
+            animator.SetBool("isWalking", false);
+            animator.SetBool("isSprinting", false);
+        }
         // state wheely
         else if (isWheelying)
         {
@@ -197,19 +206,18 @@ public class PlayerMovement : MonoBehaviour
         {
             state = MovementState.sprinting;
             currentTargetSpeed = sprintSpeed;
-            // Debug.Log("Player is sprinting");
+            animator.SetBool("isSprinting", true);
+            animator.SetBool("isIdle", false);
+            animator.SetBool("isWalking", false);
         }
         // state walking
-        else if (isGrounded)
+        else if (isGrounded && (horizontalInput != 0 || verticalInput != 0))
         {
             state = MovementState.walking;
             currentTargetSpeed = walkSpeed;
-            // Debug.Log("Player is walking");
-        }
-        // idle
-        else if (isGrounded && horizontalInput == 0 && verticalInput == 0)
-        {
-            state = MovementState.idle;
+            animator.SetBool("isWalking", true);
+            animator.SetBool("isIdle", false);
+            animator.SetBool("isSprinting", false);
         }
         // state air
         else if (!isGrounded)
@@ -290,6 +298,8 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
 
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+
+        animator.SetTrigger("Jump");
     }
     private void ResetJump()
     {

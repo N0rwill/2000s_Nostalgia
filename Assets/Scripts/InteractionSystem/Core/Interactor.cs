@@ -6,14 +6,16 @@ public class Interactor : MonoBehaviour
     [SerializeField] private float maxUseDistance = 5f;
     [SerializeField] private LayerMask useLayers;
 
+    public Animator animator;
+
     void Update()
     {
         if (Input.GetButtonDown("Interact"))
         {
-            Debug.Log("Interact button pressed");
+            animator.SetTrigger("Interact");
+            // Perform the interaction test and get the interactable object
             if (DoInteractionTest(out IInteractable interactable))
             {
-                Debug.Log("Interactable found: " + interactable);
                 if (interactable.canInteract())
                 {
                     interactable.Interact(this);
@@ -38,7 +40,7 @@ public class Interactor : MonoBehaviour
 
             return false;
         }
-        
+
         return false;
     }
 
