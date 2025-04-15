@@ -55,6 +55,11 @@ public class GrappleMovement : MonoBehaviour
         if (grapplingCdTimer > 0) //constant cooldown timer. When 0, can grapple again
         {
             grapplingCdTimer -= Time.deltaTime;
+
+            pm.freeze = false;
+            grappling = false;
+            lr.enabled = false;
+            grapplePoint = cam.position + cam.forward * maxGrappleDistance;
         }
     }
 
