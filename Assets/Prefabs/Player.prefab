@@ -265,7 +265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 2.5, z: -4.5}
+  m_FollowOffset: {x: 0, y: 1.46, z: -4.5}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 0.5
@@ -672,7 +672,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1215590154451041918}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.13974154, y: -0.001554381, z: 0.00021936424, w: 0.9901868}
+  m_LocalRotation: {x: 0.074738935, y: -0.0015653932, z: 0.000117324096, w: 0.9972019}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -922,7 +922,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1469419592191909378}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.13974154, y: -0.001554381, z: 0.00021936424, w: 0.9901868}
+  m_LocalRotation: {x: 0.074738935, y: -0.0015653932, z: 0.000117324096, w: 0.9972019}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1208,17 +1208,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3079bbc39ca8483499ccad2eb0bd792d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 7
-  sprintSpeed: 10
-  wheelySpeed: 20
+  walkSpeed: 6
+  sprintSpeed: 9
+  wheelySpeed: 17
   speedTransitionSpeed: 10
-  GroundDrag: 5
+  groundDrag: 5
   hasWheely: 0
-  jumpForce: 10.5
+  jumpForce: 11
   jumpCooldown: 0.25
-  airMultiplier: 1.5
-  fallMultiplier: 1.5
-  fallMultiplierTransitionSpeed: 3
+  airMultiplier: 0.9
+  fallMultiplier: 4
+  fallMultiplierTransitionSpeed: 1.5
   maxFallSpeed: 30
   jumpKey: 32
   sprintKey: 304
@@ -1277,7 +1277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Camera: {fileID: 6651822304707676922}
-  maxUseDistance: 7
+  maxUseDistance: 8
   useLayers:
     serializedVersion: 2
     m_Bits: 512
@@ -1518,7 +1518,7 @@ Transform:
   m_GameObject: {fileID: 3191266224427440848}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.69, y: 0.72, z: 0}
+  m_LocalPosition: {x: 0.69, y: 0.29, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2501,8 +2501,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5751141341592308918}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.13974153, y: -0.0015544735, z: 0.0002193773, w: 0.9901868}
-  m_LocalPosition: {x: -0.34139597, y: 0.5950655, z: -3.606501}
+  m_LocalRotation: {x: 0.07473895, y: -0.0015653931, z: 0.000117324096, w: 0.9972019}
+  m_LocalPosition: {x: -0.34139645, y: -0.4449345, z: -3.606501}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2842,7 +2842,7 @@ Transform:
   m_GameObject: {fileID: 6506423864672368903}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.3413961, y: 0.5950655, z: -3.606501}
+  m_LocalPosition: {x: -0.34139645, y: -0.4449345, z: -3.606501}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2947,7 +2947,7 @@ MonoBehaviour:
   m_Orbits:
   - m_Height: 4.5
     m_Radius: 1.75
-  - m_Height: 2.5
+  - m_Height: 1.46
     m_Radius: 4.5
   - m_Height: 0.1
     m_Radius: 2
@@ -3444,7 +3444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 2.5, z: -4.5}
+  m_FollowOffset: {x: 0, y: 1.46, z: -4.5}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -3834,7 +3834,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 2.5, z: -4.5}
+  m_FollowOffset: {x: 0, y: 1.46, z: -4.5}
   m_XDamping: 0.5
   m_YDamping: 0.5
   m_ZDamping: 0.1
@@ -3927,7 +3927,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8982784535112778868}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.09871239, y: -0.0015621168, z: 0.00015495729, w: 0.9951148}
+  m_LocalRotation: {x: 0.03347548, y: -0.0015689039, z: 0.00005254932, w: 0.99943835}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

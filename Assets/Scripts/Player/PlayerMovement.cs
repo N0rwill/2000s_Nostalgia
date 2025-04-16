@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public float speedTransitionSpeed = 10f;
     private float currentTargetSpeed;
 
-    public float GroundDrag;
+    public float groundDrag;
 
     [Header("Sprint")]
     private bool isSprinting;
@@ -110,7 +110,7 @@ public class PlayerMovement : MonoBehaviour
         // drag handler
         if (isGrounded && !activeGrapple)
         {
-            rb.drag = GroundDrag;
+            rb.drag = groundDrag;
         }
         else
         {
@@ -289,13 +289,18 @@ public class PlayerMovement : MonoBehaviour
                 rb.velocity = Vector3.Lerp(rb.velocity, new Vector3(limitedVelocity.x, rb.velocity.y, limitedVelocity.z), Time.deltaTime * speedTransitionSpeed);
             }
         }
+
+        if (horizontalInput == 0 && verticalInput == 0 && !isGrounded && !OnSlope())
+        {
+            rb.velocity = Vector3.Lerp(rb.velocity, new Vector3(0, rb.velocity.y, 0), Time.deltaTime * 1f);
+        }
     }
 
     private void Jump()
     {
         exitingSlope = true;
 
-        rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+        rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);        
 
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
 
