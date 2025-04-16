@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 public class GrappleMovement : MonoBehaviour
 {
     [Header("References")]
-    private PlayerMovement pm;
+    private PlayerMovement playermove;
     public Transform cam;
     public Transform stickyhand;
     public LayerMask grapple;
@@ -40,7 +40,7 @@ public class GrappleMovement : MonoBehaviour
     void Start()
     {
 
-        pm = GetComponent<PlayerMovement>();
+        playermove = GetComponent<PlayerMovement>();
 
     }
 
@@ -56,7 +56,7 @@ public class GrappleMovement : MonoBehaviour
         {
             grapplingCdTimer -= Time.deltaTime;
 
-            pm.freeze = false;
+            playermove.freeze = false;
             grappling = false;
             lr.enabled = false;
             grapplePoint = cam.position + cam.forward * maxGrappleDistance;
@@ -81,7 +81,7 @@ public class GrappleMovement : MonoBehaviour
 
         if (canSeeGrapple)
         {
-            pm.freeze = true; //freeze the player for dramatic effect
+            playermove.freeze = true; //freeze the player for dramatic effect
 
             Debug.Log("LAUNCHING");
 
@@ -98,6 +98,13 @@ public class GrappleMovement : MonoBehaviour
 
                 Invoke(nameof(ExecuteGrapplePull), grappleDelayTime);
             }
+            else 
+            {
+                grapplePoint = hit.point; //Again, point where the grapple hits
+
+                Invoke(nameof(StopGrapple), grappleDelayTime); //And then stop the grapple.
+            }
+            
         }
 
         else
@@ -113,7 +120,7 @@ public class GrappleMovement : MonoBehaviour
 
     private void ExecuteGrapplePull() 
     {
-        pm.freeze = false; //unfreeze the player
+        playermove.freeze = false; //unfreeze the player
 
         grappleObject.GetComponent<GrapplePulling>().pullForce = pullForce; //Pull the game object at the force that the player has on it.
         grappleObject.GetComponent<GrapplePulling>().pull = true;
@@ -123,7 +130,7 @@ public class GrappleMovement : MonoBehaviour
 
     private void ExecuteGrappleLaunch() 
     {
-        pm.freeze = false; //unfreeze the player
+        playermove.freeze = false; //unfreeze the player
 
         Vector3 lowestPoint = new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z); //The bottom of the player
 
@@ -132,7 +139,7 @@ public class GrappleMovement : MonoBehaviour
 
         if (grapplePointRelativeYPos < 0) highestPointOnArc = overshootYAxis; //If player is higher than the grapple point, just make the highest point and arc the same thing.
 
-        pm.LaunchToPosition(launchToPoint, highestPointOnArc); //Launch the player to the point along the arc (Calculation in Player Movement)
+        playermove.LaunchToPosition(launchToPoint, highestPointOnArc); //Launch the player to the point along the arc (Calculation in Player Movement)
 
         Invoke(nameof(StopGrapple), 1f); //Only grapple for a little bit
     }
@@ -141,7 +148,7 @@ public class GrappleMovement : MonoBehaviour
     {
         //Just undo everything, and set the grapple cooldown
 
-        pm.freeze = false;
+        playermove.freeze = false;
         grappling = false;
         grapplingCdTimer = grapplingCd;
         lr.enabled = false;
