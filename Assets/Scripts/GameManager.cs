@@ -6,8 +6,6 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public Button returnButton;
-    public Button quitButton;
     private bool paused = false;
 
     [SerializeField] public GameObject pauseMenu;
@@ -21,8 +19,14 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetButtonDown("Cancel"))
         {
-            paused = !paused;
-            Pause(paused);
+            if (paused == false)
+            {
+                Pause();
+            }
+            else 
+            { 
+                Resume(); 
+            }
         }
     }
 
@@ -40,25 +44,29 @@ public class GameManager : MonoBehaviour
 
     public void ReturnToMenu()
     {
-        SceneManager.LoadScene("Start");
+       SceneManager.LoadScene("Start");
+        Time.timeScale = 1f;
         Debug.Log("Returned to Menu.");
     }
 
-    public void Pause(bool paused)
+    public void Settings()
     {
-        
-        if (paused == true)
-        {
-            pauseMenu.SetActive(true);
-            Time.timeScale = 0f;
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-        }
-        else if (paused == false)
-        {
+        Debug.Log("Settings");
+    }
+
+    public void Pause()
+    {
+
+        pauseMenu.SetActive(true);
+        Time.timeScale = 0f;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+    public void Resume() 
+    { 
             pauseMenu.SetActive(false);
             Time.timeScale = 1f;
             Cursor.visible = false;
-        }
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }
