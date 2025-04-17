@@ -10,11 +10,6 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] public GameObject pauseMenu;
 
-    private void Start()
-    {
-        
-    }
-
     public void Update()
     {
         if (Input.GetButtonDown("Cancel"))
@@ -38,14 +33,13 @@ public class GameManager : MonoBehaviour
 
     public void QuitGame()
     {
-        Application.Quit();
+        //Application.Quit();
         Debug.Log("Application has quit.");
     }
 
     public void ReturnToMenu()
     {
        SceneManager.LoadScene("Start");
-        Time.timeScale = 1f;
         Debug.Log("Returned to Menu.");
     }
 
@@ -56,15 +50,16 @@ public class GameManager : MonoBehaviour
 
     public void Pause()
     {
-
         pauseMenu.SetActive(true);
+        paused = true;
         Time.timeScale = 0f;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }
     public void Resume() 
-    { 
+    {
             pauseMenu.SetActive(false);
+        paused = false;
             Time.timeScale = 1f;
             Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
