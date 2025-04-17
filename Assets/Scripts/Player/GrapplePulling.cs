@@ -7,11 +7,11 @@ public class GrapplePulling : MonoBehaviour
     public GameObject player;
     public bool pull = false;
     public float pullForce;
-    private Rigidbody rigidbody;
+    private Rigidbody rb;
 
     void Start()
     {
-        rigidbody = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
     }
 
     void FixedUpdate()
@@ -20,7 +20,7 @@ public class GrapplePulling : MonoBehaviour
         {
             //If the player grapples the object, move the object toward the player.
             Vector3 direction = (player.transform.position - transform.position).normalized;
-            rigidbody.AddForce(direction * pullForce);
+            rb.AddForce(direction * pullForce);
         }
     }
 }

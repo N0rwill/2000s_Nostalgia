@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Wheely")]
     public bool hasWheely = false;
-    private bool isWheelying;
+    public bool isWheelying;
 
     [Header("Jump")]
     public float jumpForce;
@@ -193,13 +193,15 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("isIdle", true);
             animator.SetBool("isWalking", false);
             animator.SetBool("isSprinting", false);
+            animator.SetBool("isHeelying", false);
         }
         // state wheely
         else if (isWheelying)
         {
             state = MovementState.wheelying;
             currentTargetSpeed = wheelySpeed;
-            // Debug.Log("Player is wheelying");
+            animator.SetBool("isHeelying", true);
+            animator.SetBool("isSprinting", false);
         }
         // state sprinting
         else if (isSprinting)
@@ -207,8 +209,8 @@ public class PlayerMovement : MonoBehaviour
             state = MovementState.sprinting;
             currentTargetSpeed = sprintSpeed;
             animator.SetBool("isSprinting", true);
-            animator.SetBool("isIdle", false);
             animator.SetBool("isWalking", false);
+            animator.SetBool("isHeelying", false);
         }
         // state walking
         else if (isGrounded && (horizontalInput != 0 || verticalInput != 0))

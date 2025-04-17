@@ -31,6 +31,9 @@ public class GrappleMovement : MonoBehaviour
     [Header("Input")]
     public KeyCode grappleKey = KeyCode.Mouse1;
 
+    [Header("Animation")]
+    public Animator animator;
+
     private bool grappling;
 
     public bool canSeeGrapple = false;
@@ -76,6 +79,8 @@ public class GrappleMovement : MonoBehaviour
         if (grapplingCdTimer > 0) return; //fails grapple if cooldown
 
         grappling = true;
+
+        animator.SetTrigger("Grapple"); //play the grapple animation
 
         RaycastHit hit;
 
