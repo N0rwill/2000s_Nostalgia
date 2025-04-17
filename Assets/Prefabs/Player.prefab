@@ -672,7 +672,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1215590154451041918}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.074738935, y: -0.0015654933, z: 0.000117331605, w: 0.9972019}
+  m_LocalRotation: {x: 0.074738935, y: -0.0015653932, z: 0.000117324096, w: 0.9972019}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -922,7 +922,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1469419592191909378}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.074738935, y: -0.0015654933, z: 0.000117331605, w: 0.9972019}
+  m_LocalRotation: {x: 0.074738935, y: -0.0015653932, z: 0.000117324096, w: 0.9972019}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1122,6 +1122,7 @@ GameObject:
   - component: {fileID: 9063105476366939676}
   - component: {fileID: 1153686825734474410}
   - component: {fileID: 127216193921079193}
+  - component: {fileID: 6395824840168581657}
   - component: {fileID: 7578109951602053275}
   m_Layer: 0
   m_Name: Player
@@ -1264,6 +1265,27 @@ MonoBehaviour:
   grapplingCd: 1
   grappleKey: 324
   canSeeGrapple: 0
+--- !u!135 &6395824840168581657
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2000645969416673891}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7578109951602053275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1276,9 +1298,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26c7e5d0304c9e94284989b9a6b2cd69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Camera: {fileID: 6651822304707676922}
-  maxUseDistance: 8
-  useLayers:
+  interactionRadius: 2
+  interactableLayers:
     serializedVersion: 2
     m_Bits: 512
   animator: {fileID: 9063105476366939676}
@@ -2514,7 +2535,7 @@ Transform:
   m_GameObject: {fileID: 5751141341592308918}
   serializedVersion: 2
   m_LocalRotation: {x: 0.07473895, y: -0.0015653931, z: 0.000117324096, w: 0.9972019}
-  m_LocalPosition: {x: -0.4108684, y: 85.04506, z: -30.126501}
+  m_LocalPosition: {x: -0.34139645, y: -0.4449345, z: -3.606501}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3939,7 +3960,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8982784535112778868}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.03347548, y: -0.0015690043, z: 0.000052552685, w: 0.99943835}
+  m_LocalRotation: {x: 0.03347548, y: -0.0015689039, z: 0.00005254932, w: 0.99943835}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

@@ -1,59 +1,81 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Interactor : MonoBehaviour
 {
-    [SerializeField] private Transform Camera;
-    [SerializeField] private float maxUseDistance = 5f;
-    [SerializeField] private LayerMask useLayers;
-
+    [SerializeField] private float interactionRadius = 2f;
+    [SerializeField] private LayerMask interactableLayers;
+    
     public Animator animator;
+    
+    // list of interactables in range of player
+    private List<IInteractable> nearbyInteractables = new List<IInteractable>();
+    private IInteractable currentInteractable;
 
     void Update()
     {
         if (Input.GetButtonDown("Interact"))
         {
             animator.SetTrigger("Interact");
-            // Perform the interaction test and get the interactable object
-            if (DoInteractionTest(out IInteractable interactable))
+            if (currentInteractable != null && currentInteractable.canInteract())
             {
-                if (interactable.canInteract())
+                currentInteractable.Interact(this);
+            }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        // adds interactable to list
+        if (((1 << other.gameObject.layer) & interactableLayers) != 0)
+        {
+            IInteractable interactable = other.GetComponent<IInteractable>();
+            if (interactable != null && !nearbyInteractables.Contains(interactable))
+            {
+                nearbyInteractables.Add(interactable);
+                UpdateCurrentInteractable();
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        // removes interactable from list when the interacable is out of range
+        IInteractable interactable = other.GetComponent<IInteractable>();
+        if (interactable != null)
+        {
+            nearbyInteractables.Remove(interactable);
+            UpdateCurrentInteractable();
+        }
+    }
+
+    private void UpdateCurrentInteractable()
+    {
+        // Find the closest interactable
+        float closestDistance = float.MaxValue;
+        currentInteractable = null;
+
+        foreach (IInteractable interactable in nearbyInteractables)
+        {
+            if (interactable.canInteract())
+            {
+                MonoBehaviour mono = interactable as MonoBehaviour;
+                if (mono != null)
                 {
-                    interactable.Interact(this);
+                    float distance = Vector3.Distance(transform.position, mono.transform.position);
+                    if (distance < closestDistance)
+                    {
+                        closestDistance = distance;
+                        currentInteractable = interactable;
+                    }
                 }
             }
         }
     }
-
-    private bool DoInteractionTest(out IInteractable interactable)
+    
+    // Call this if any nearby interactable's state changes
+    public void RefreshInteractables()
     {
-        interactable = null;
-
-        if (Physics.Raycast(Camera.position, Camera.forward, out RaycastHit hit, maxUseDistance, useLayers))
-        {
-            interactable = hit.collider.GetComponent<IInteractable>();
-
-            if (interactable != null)
-            {
-                Debug.Log("Hit interactable: " + interactable);
-                return true;
-            }
-
-            return false;
-        }
-
-        return false;
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.yellow;
-
-        Vector3 rayStart = Camera.position;
-        Vector3 rayEnd = rayStart + (Camera.forward * maxUseDistance);
-        
-        // Draw the ray line
-        Gizmos.DrawLine(rayStart, rayEnd);
-        // Draw a small sphere at the end of the ray for better visualization
-        Gizmos.DrawWireSphere(rayEnd, 0.1f);
+        UpdateCurrentInteractable();
     }
 }
