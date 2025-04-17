@@ -914,6 +914,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1905799198}
     m_Modifications:
+    - target: {fileID: 1598315195702989408, guid: 6b50bcc417c7e174ab9a74ed881797f1, type: 3}
+      propertyPath: waypoints
+      value: 
+      objectReference: {fileID: 1753000440}
     - target: {fileID: 6290850866074126315, guid: 6b50bcc417c7e174ab9a74ed881797f1, type: 3}
       propertyPath: m_Name
       value: Truck
@@ -1444,7 +1448,7 @@ PrefabInstance:
     - target: {fileID: 7381829994957551638, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 187631940}
     - target: {fileID: 7381829994957551638, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: QuitGame
