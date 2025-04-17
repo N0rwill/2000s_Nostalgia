@@ -33,12 +33,12 @@ public class Waypoint : MonoBehaviour
         }
         if (movingObject.CompareTag("Chase"))
         {
-            // If it's the last waypoint, go back to the first waypoint
             if (currentWaypoint.GetSiblingIndex() >= transform.childCount - 1)
             {
-                return null;
+                return transform.GetChild(currentWaypoint.GetSiblingIndex());
             }
         }
+        // If it's the last waypoint, go back to the first waypoint
         if (currentWaypoint.GetSiblingIndex() < transform.childCount - 1)
         {
             return transform.GetChild(currentWaypoint.GetSiblingIndex() + 1);
@@ -47,6 +47,8 @@ public class Waypoint : MonoBehaviour
         {
             return transform.GetChild(0);
         }
+        
+
 
 
     }
