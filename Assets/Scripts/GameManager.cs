@@ -2,20 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public Button returnButton;
+    public Button quitButton;
     private bool paused = false;
 
     [SerializeField] public GameObject pauseMenu;
+
+    private void Start()
+    {
+        
+    }
 
     public void Update()
     {
         if (Input.GetButtonDown("Cancel"))
         {
+            paused = !paused;
             Pause(paused);
         }
-
     }
 
     public void StartGame()
@@ -38,17 +46,19 @@ public class GameManager : MonoBehaviour
 
     public void Pause(bool paused)
     {
-        if (paused == false)
+        
+        if (paused == true)
         {
-            paused = true;
             pauseMenu.SetActive(true);
             Time.timeScale = 0f;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
-        else if (paused == true)
+        else if (paused == false)
         {
-            paused = false;
             pauseMenu.SetActive(false);
             Time.timeScale = 1f;
+            Cursor.visible = false;
         }
     }
 }
