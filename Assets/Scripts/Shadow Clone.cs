@@ -12,13 +12,18 @@ public class ShadowClone : MonoBehaviour
     private List<PositionInfo> playerPositions = new List<PositionInfo>();
 
     public GameObject shadow;
-    //public Animator shadowAnim;
+    public Animator shadowAnim;
     public float distanceToPlayer;
 
     public GameObject start;
     private bool created;
     //public GameObject creationFx;
-    //private string savedAnim;
+    private string savedAnim;
+
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+    }
 
     void FixedUpdate()
     {
@@ -27,7 +32,7 @@ public class ShadowClone : MonoBehaviour
         {
             position = player.transform.position,
             scale = player.transform.localScale,
-            //anim = player.anim.GetCurrentAnimatorClipInfo(0)[0].clip,
+            anim = player.animator.GetCurrentAnimatorClipInfo(0)[0].clip,
         };
 
         playerPositions.Add(posNew);
@@ -55,7 +60,7 @@ public class ShadowClone : MonoBehaviour
         //set info
         PositionInfo setInfo = playerPositions[0];
         SetShadowPos(setInfo);
-        //SetShadowAnimation(setInfo);
+        SetShadowAnimation(setInfo);
 
         
         distanceToPlayer = Vector3.Distance(player.transform.position, shadow.transform.position);
@@ -78,6 +83,20 @@ public class ShadowClone : MonoBehaviour
         
     }
 
+    void SetShadowAnimation(PositionInfo setInfo)
+    {
+        //set shadow animation
+        if (setInfo.anim != null)
+        {
+            if (savedAnim != setInfo.anim.name)
+            {
+                
+                savedAnim = setInfo.anim.name;
+                shadowAnim.Play(setInfo.anim.name);
+            }
+        }
+    }
+
 
     void Caught(Vector3 playerPosition)
     {
@@ -97,5 +116,5 @@ public class PositionInfo
     //position info
     public Vector3 position;
     public Vector3 scale;
-    //public AnimationClip anim;
+    public AnimationClip anim;
 }
