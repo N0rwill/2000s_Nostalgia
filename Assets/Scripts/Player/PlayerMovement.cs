@@ -127,6 +127,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void MyInput()
     {
+        if (freeze) 
+        {
+            horizontalInput = 0;
+            verticalInput = 0;
+
+            return;
+        }
+
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 

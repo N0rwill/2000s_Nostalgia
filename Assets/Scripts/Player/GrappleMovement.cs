@@ -38,7 +38,7 @@ public class GrappleMovement : MonoBehaviour
 
     public bool canSeeGrapple = false;
 
-    
+
 
     void Start()
     {
@@ -68,19 +68,22 @@ public class GrappleMovement : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (grappling) 
+        if (grappling)
         {
             lr.SetPosition(0, stickyhand.position); //set the line renderer from you to wherever the stickyhand connects while grappling.
         }
     }
 
-    private void StartGrapple() 
+    private void StartGrapple()
     {
+
         if (grapplingCdTimer > 0) return; //fails grapple if cooldown
 
         grappling = true;
 
         animator.SetTrigger("Grapple"); //play the grapple animation
+
+        playermove.freeze = true; //freeze the player for dramatic effect
 
         RaycastHit hit;
 
@@ -90,40 +93,50 @@ public class GrappleMovement : MonoBehaviour
 
             Debug.Log("LAUNCHING");
 
-            Invoke(nameof(ExecuteGrappleLaunch), grappleDelayTime);
+            StartCoroutine(animationwaiterlaunch());
         }
 
         else if (Physics.Raycast(cam.position, cam.forward, out hit, maxGrappleDistance, grapple)) //sends out a raycast to see if it hits a launch object, a pull object, or nothing.
         {
+            playermove.freeze = true; //freeze the player for dramatic effect
+
             if (hit.collider.gameObject.CompareTag("GrapplePull"))
             {
                 grapplePoint = hit.point; //Again, point where the grapple hits
 
                 grappleObject = hit.collider.gameObject; //Again, game object that the player just hit with the grapple.
 
-                Invoke(nameof(ExecuteGrapplePull), grappleDelayTime);
+                transform.LookAt(grapplePoint); //Turns the character toward the point they nail.
+
+                StartCoroutine(animationwaiterpull());
+
             }
-            else 
+            else
             {
+                playermove.freeze = true; //freeze the player for dramatic effect
+
                 grapplePoint = hit.point; //Again, point where the grapple hits
 
-                Invoke(nameof(StopGrapple), grappleDelayTime); //And then stop the grapple.
+                transform.LookAt(grapplePoint); //Turns the character toward the point they nail.
+
+                StartCoroutine(animationwaiterfail());
             }
-            
+
         }
 
         else
         {
+            playermove.freeze = true; //freeze the player for dramatic effect
+
             grapplePoint = cam.position + cam.forward * maxGrappleDistance; //If the player misses anything, just put the grapple out the max distance
 
-            Invoke(nameof(StopGrapple), grappleDelayTime); //And then stop the grapple.
-        }
+            transform.LookAt(grapplePoint); //Turns the character toward the point they nail.
 
-        lr.enabled = true;
-        lr.SetPosition(1, grapplePoint); //Create a line renderer for the grapple, launching it out to the point the player connects with, or max distance.
+            StartCoroutine(animationwaiterfail());
+        }
     }
 
-    private void ExecuteGrapplePull() 
+    private void ExecuteGrapplePull()
     {
         playermove.freeze = false; //unfreeze the player
 
@@ -133,7 +146,7 @@ public class GrappleMovement : MonoBehaviour
         Invoke(nameof(StopGrapple), 1f); //Only grapple for a little bit
     }
 
-    private void ExecuteGrappleLaunch() 
+    private void ExecuteGrappleLaunch()
     {
         playermove.freeze = false; //unfreeze the player
 
@@ -149,33 +162,83 @@ public class GrappleMovement : MonoBehaviour
         Invoke(nameof(StopGrapple), 1f); //Only grapple for a little bit
     }
 
-    public void StopGrapple() 
+    public void StopGrapple()
     {
-        //Just undo everything, and set the grapple cooldown
-
         playermove.freeze = false;
         grappling = false;
         grapplingCdTimer = grapplingCd;
         lr.enabled = false;
-        
+
         if (grappleObject.GetComponent<GrapplePulling>() != null)
         {
             grappleObject.GetComponent<GrapplePulling>().pull = false;
             grappleObject.GetComponent<GrapplePulling>().pullForce = 0;
             grappleObject = null;
+
+            //Just undo everything, and set the grapple cooldown
+
+            playermove.freeze = false;
+            grappling = false;
+            grapplingCdTimer = grapplingCd;
+            lr.enabled = false;
         }
 
         else if (grappleObject = null)
         {
+            //Just undo everything, and set the grapple cooldown
+
+            playermove.freeze = false;
+            grappling = false;
+            grapplingCdTimer = grapplingCd;
+            lr.enabled = false;
+
             return;
         }
 
-        else { return; }
+        else
+        {
+            //Just undo everything, and set the grapple cooldown
+
+            playermove.freeze = false;
+            grappling = false;
+            grapplingCdTimer = grapplingCd;
+            lr.enabled = false; return;
+        }
     }
 
     public bool IsGrappling()
     {
         //Can't grapple while grappling
         return grappling;
+    }
+
+    IEnumerator animationwaiterlaunch()
+    {
+        yield return new WaitForSeconds(1);
+
+        lr.SetPosition(1, grapplePoint); //Create a line renderer for the grapple, launching it out to the point the player connects with, or max distance.
+        lr.enabled = true;
+
+        Invoke(nameof(ExecuteGrappleLaunch), grappleDelayTime);
+    }
+
+    IEnumerator animationwaiterpull()
+    {
+        yield return new WaitForSeconds(1);
+
+        lr.SetPosition(1, grapplePoint); //Create a line renderer for the grapple, launching it out to the point the player connects with, or max distance.
+        lr.enabled = true;
+
+        Invoke(nameof(ExecuteGrapplePull), grappleDelayTime);
+    }
+
+    IEnumerator animationwaiterfail()
+    {
+        yield return new WaitForSeconds(1);
+
+        lr.SetPosition(1, grapplePoint); //Create a line renderer for the grapple, launching it out to the point the player connects with, or max distance.
+        lr.enabled = true;
+
+        Invoke(nameof(StopGrapple), grappleDelayTime);
     }
 }
