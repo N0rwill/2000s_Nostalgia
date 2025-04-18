@@ -127,13 +127,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void MyInput()
     {
-        if (freeze) 
-        {
-            horizontalInput = 0;
-            verticalInput = 0;
-
-            return;
-        }
 
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
@@ -203,6 +196,7 @@ public class PlayerMovement : MonoBehaviour
             state = MovementState.freeze;
             currentTargetSpeed = 0;
             rb.velocity = Vector3.zero;
+
             Debug.Log("Player is frozen");
         }
         // idle

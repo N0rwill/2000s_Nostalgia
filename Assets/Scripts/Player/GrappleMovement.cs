@@ -64,6 +64,11 @@ public class GrappleMovement : MonoBehaviour
             lr.enabled = false;
             grapplePoint = cam.position + cam.forward * maxGrappleDistance;
         }
+
+        if (playermove.activeGrapple == true) 
+        {
+            transform.LookAt(grapplePoint);
+        }
     }
 
     private void LateUpdate()
@@ -214,9 +219,11 @@ public class GrappleMovement : MonoBehaviour
 
     IEnumerator animationwaiterlaunch()
     {
-        yield return new WaitForSeconds(1);
 
         lr.SetPosition(1, grapplePoint); //Create a line renderer for the grapple, launching it out to the point the player connects with, or max distance.
+
+        yield return new WaitForSeconds(1);
+
         lr.enabled = true;
 
         Invoke(nameof(ExecuteGrappleLaunch), grappleDelayTime);
@@ -224,9 +231,10 @@ public class GrappleMovement : MonoBehaviour
 
     IEnumerator animationwaiterpull()
     {
+        lr.SetPosition(1, grapplePoint); //Create a line renderer for the grapple, launching it out to the point the player connects with, or max distance.
+
         yield return new WaitForSeconds(1);
 
-        lr.SetPosition(1, grapplePoint); //Create a line renderer for the grapple, launching it out to the point the player connects with, or max distance.
         lr.enabled = true;
 
         Invoke(nameof(ExecuteGrapplePull), grappleDelayTime);
@@ -234,9 +242,10 @@ public class GrappleMovement : MonoBehaviour
 
     IEnumerator animationwaiterfail()
     {
+        lr.SetPosition(1, grapplePoint); //Create a line renderer for the grapple, launching it out to the point the player connects with, or max distance.
+
         yield return new WaitForSeconds(1);
 
-        lr.SetPosition(1, grapplePoint); //Create a line renderer for the grapple, launching it out to the point the player connects with, or max distance.
         lr.enabled = true;
 
         Invoke(nameof(StopGrapple), grappleDelayTime);

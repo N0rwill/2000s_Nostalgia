@@ -1969,7 +1969,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1135218517}
   serializedVersion: 4
-  m_Mass: 1.5
+  m_Mass: 5
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -4356,6 +4356,15 @@ PrefabInstance:
     - target: {fileID: 7574628127113499599, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7687800331984085935, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
+      propertyPath: m_WarningMessage
+      value: "\nBinding warning: Some generic clip(s) animate transforms that are
+        already bound by a Humanoid avatar. These transforms can only be changed
+        by Humanoid clips.\n\tTransform 'joint17'\n\tTransform 'joint2'\n\tTransform
+        'joint19'\n\tTransform 'joint18'\n\tTransform 'joint20'\n\tTransform 'hips'\n\tTransform
+        'joint3'\n\tTransform 'joint17'\n\tTransform 'joint24'\n\tTransform 'joint2'\n\tand
+        more ...\n\tFrom animation clip 'Dead'"
       objectReference: {fileID: 0}
     - target: {fileID: 7892958114981915149, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
       propertyPath: m_LocalScale.x
