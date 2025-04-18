@@ -2659,6 +2659,20 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 9063105476366939676, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
   m_PrefabInstance: {fileID: 7596002979155714247}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1499799886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489217330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f62b08cd5d09ab4184034c3e5b2829c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isdead: 0
+  animator: {fileID: 1499799881}
 --- !u!1 &1503353205
 GameObject:
   m_ObjectHideFlags: 0
@@ -4407,10 +4421,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9063105476366939676, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
+      propertyPath: m_WarningMessage
+      value: "\nBinding warning: Some generic clip(s) animate transforms that are
+        already bound by a Humanoid avatar. These transforms can only be changed
+        by Humanoid clips.\n\tTransform 'joint17'\n\tTransform 'joint2'\n\tTransform
+        'joint19'\n\tTransform 'joint18'\n\tTransform 'joint20'\n\tTransform 'hips'\n\tTransform
+        'joint3'\n\tTransform 'joint17'\n\tTransform 'joint24'\n\tTransform 'joint2'\n\tand
+        more ...\n\tFrom animation clip 'Dead'"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2000645969416673891, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1499799886}
   m_SourcePrefab: {fileID: 100100000, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

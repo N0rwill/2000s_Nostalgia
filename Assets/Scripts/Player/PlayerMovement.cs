@@ -53,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Animation")]
     public Animator animator;
+    private bool wasWheelying; // Track previous wheelying state
 
     public Transform orientation;
 
@@ -92,6 +93,7 @@ public class PlayerMovement : MonoBehaviour
 
         isSprinting = false;
         isWheelying = false;
+        wasWheelying = false;
     }
 
     private void Update()
@@ -172,6 +174,15 @@ public class PlayerMovement : MonoBehaviour
         else if (verticalInput <= 0)
         {
             isSprinting = false;
+            isWheelying = false;
+        }
+
+        wasWheelying = isWheelying;
+
+        // Check for stopping input while wheelying
+        if (wasWheelying && (horizontalInput == 0 && verticalInput == 0))
+        {
+            animator.SetTrigger("HeelyStop");
             isWheelying = false;
         }
     }
