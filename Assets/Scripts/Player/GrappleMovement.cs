@@ -47,6 +47,8 @@ public class GrappleMovement : MonoBehaviour
 
         playermove = GetComponent<PlayerMovement>();
 
+        stickyHandHand.transform.position = stickyhand.position;
+
     }
 
     void Update()
@@ -67,10 +69,6 @@ public class GrappleMovement : MonoBehaviour
             grapplePoint = cam.position + cam.forward * maxGrappleDistance;
         }
 
-        if (playermove.activeGrapple == true) 
-        {
-            transform.LookAt(grapplePoint);
-        }
     }
 
     private void LateUpdate()
@@ -183,6 +181,9 @@ public class GrappleMovement : MonoBehaviour
         lr.enabled = false;
 
         stickyHandHand.transform.position = stickyhand.position;
+        stickyHandHand.transform.rotation = Quaternion.Euler(90, 0, -90);
+
+        stickyHandHand.transform.SetParent(stickyhand.transform);
 
         if (grappleObject.GetComponent<GrapplePulling>() != null)
         {
@@ -232,6 +233,12 @@ public class GrappleMovement : MonoBehaviour
 
         lr.SetPosition(1, grapplePoint); //Create a line renderer for the grapple, launching it out to the point the player connects with, or max distance.
 
+        stickyHandHand.transform.SetParent(null);
+
+        stickyHandHand.transform.rotation *= Quaternion.Euler(0, 0, 90);
+
+        stickyHandHand.transform.position = grapplePoint;
+
         yield return new WaitForSeconds(1);
 
         lr.enabled = true;
@@ -243,6 +250,12 @@ public class GrappleMovement : MonoBehaviour
     {
         lr.SetPosition(1, grapplePoint); //Create a line renderer for the grapple, launching it out to the point the player connects with, or max distance.
 
+        stickyHandHand.transform.SetParent(null);
+
+        stickyHandHand.transform.rotation *= Quaternion.Euler(0, 0, 90);
+
+        stickyHandHand.transform.position = grapplePoint;
+
         yield return new WaitForSeconds(1);
 
         lr.enabled = true;
@@ -253,6 +266,12 @@ public class GrappleMovement : MonoBehaviour
     IEnumerator animationwaiterfail()
     {
         lr.SetPosition(1, grapplePoint); //Create a line renderer for the grapple, launching it out to the point the player connects with, or max distance.
+
+        stickyHandHand.transform.SetParent(null);
+
+        stickyHandHand.transform.rotation *= Quaternion.Euler(0, 0, 90);
+
+        stickyHandHand.transform.position = grapplePoint;
 
         yield return new WaitForSeconds(1);
 
