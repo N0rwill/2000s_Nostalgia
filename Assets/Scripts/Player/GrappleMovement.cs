@@ -11,6 +11,8 @@ public class GrappleMovement : MonoBehaviour
     public Transform stickyhand;
     public LayerMask grapple;
     public LineRenderer lr;
+    public GameObject stickyCrosshair;
+    public GameObject normalCrosshair;
 
     [Header("Grappling")]
     public float maxGrappleDistance;
@@ -67,6 +69,31 @@ public class GrappleMovement : MonoBehaviour
             grappling = false;
             lr.enabled = false;
             grapplePoint = cam.position + cam.forward * maxGrappleDistance;
+        }
+
+        RaycastHit hit;
+        if (canSeeGrapple)
+        {
+            stickyCrosshair.SetActive(true);
+            normalCrosshair.SetActive(false);
+        }
+        else if (Physics.Raycast(cam.position, cam.forward, out hit, maxGrappleDistance, grapple))
+        {
+            if (hit.collider.gameObject.CompareTag("GrapplePull"))
+            {
+                stickyCrosshair.SetActive(true);
+                normalCrosshair.SetActive(false);
+            }
+            else
+            {
+                stickyCrosshair.SetActive(false);
+                normalCrosshair.SetActive(true);
+            }
+        }
+        else
+        {
+            stickyCrosshair.SetActive(false);
+            normalCrosshair.SetActive(true);
         }
 
     }
