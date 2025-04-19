@@ -36,6 +36,8 @@ public class GrappleMovement : MonoBehaviour
 
     private bool grappling;
 
+    public GameObject stickyHandHand;
+
     public bool canSeeGrapple = false;
 
 
@@ -96,6 +98,8 @@ public class GrappleMovement : MonoBehaviour
         {
             playermove.freeze = true; //freeze the player for dramatic effect
 
+            stickyHandHand.transform.position = grapplePoint;
+
             Debug.Log("LAUNCHING");
 
             StartCoroutine(animationwaiterlaunch());
@@ -113,6 +117,8 @@ public class GrappleMovement : MonoBehaviour
 
                 transform.LookAt(grapplePoint); //Turns the character toward the point they nail.
 
+                stickyHandHand.transform.position = grapplePoint;
+
                 StartCoroutine(animationwaiterpull());
 
             }
@@ -123,6 +129,8 @@ public class GrappleMovement : MonoBehaviour
                 grapplePoint = hit.point; //Again, point where the grapple hits
 
                 transform.LookAt(grapplePoint); //Turns the character toward the point they nail.
+
+                stickyHandHand.transform.position = grapplePoint;
 
                 StartCoroutine(animationwaiterfail());
             }
@@ -173,6 +181,8 @@ public class GrappleMovement : MonoBehaviour
         grappling = false;
         grapplingCdTimer = grapplingCd;
         lr.enabled = false;
+
+        stickyHandHand.transform.position = stickyhand.position;
 
         if (grappleObject.GetComponent<GrapplePulling>() != null)
         {
