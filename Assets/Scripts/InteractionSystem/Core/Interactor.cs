@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 public class Interactor : MonoBehaviour
 {
-    [SerializeField] private float interactionRadius = 2f;
     [SerializeField] private LayerMask interactableLayers;
     
     public Animator animator;
