@@ -11,6 +11,8 @@ public class WaypointMover : MonoBehaviour
 
     [SerializeField] private float distanceThreshold = 0.5f;
 
+    [SerializeField] public float spawnDelay = 0f;
+
     //waypoint target object moving to
     private Transform currentWaypoint;
 
@@ -19,15 +21,23 @@ public class WaypointMover : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        StartCoroutine(SpawnAfterDelay());
+    }
+
+    private IEnumerator SpawnAfterDelay()
+    {
+        // Wait for the specified delay
+        yield return new WaitForSeconds(spawnDelay);
+
+        // Initialize the chase object
         chase = GameObject.FindWithTag("Chase");
-        //set initial position
+
+        // Set initial position
         currentWaypoint = waypoints.GetNextWaypoint(currentWaypoint, gameObject);
         transform.position = currentWaypoint.position;
 
-        //Set next target
+        // Set next target
         currentWaypoint = waypoints.GetNextWaypoint(currentWaypoint, gameObject);
-        
-
     }
 
     // Update is called once per frame
