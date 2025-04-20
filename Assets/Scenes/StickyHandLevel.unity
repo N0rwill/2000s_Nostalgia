@@ -2597,6 +2597,37 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1646560364970445634, guid: 75b871415b39fc444bb9de91039905db, type: 3}
   m_PrefabInstance: {fileID: 1390243814}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &139704501
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 139704502}
+  m_Layer: 0
+  m_Name: Launch Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &139704502
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139704501}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 12.87, y: 11.27, z: 82.02}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &154547770
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25060,7 +25091,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cc29d80b89a57747b631b0f5f01ba0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  launchObject: {fileID: 1770461966}
+  launchObject: {fileID: 139704501}
   lockOnCam: {fileID: 249949976}
   player: {fileID: 801648973}
   maxRange: 10000
@@ -31888,3 +31919,4 @@ SceneRoots:
   - {fileID: 1370699337}
   - {fileID: 90753874}
   - {fileID: 981082955}
+  - {fileID: 139704502}
