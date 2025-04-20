@@ -1053,7 +1053,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1215590154451041918}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.074738935, y: -0.0015654933, z: 0.000117331605, w: 0.9972019}
+  m_LocalRotation: {x: 0.074739315, y: -0.001565462, z: 0.00011732985, w: 0.9972019}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1378,7 +1378,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1469419592191909378}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.074738935, y: -0.0015654933, z: 0.000117331605, w: 0.9972019}
+  m_LocalRotation: {x: 0.074739315, y: -0.001565462, z: 0.00011732985, w: 0.9972019}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1684,9 +1684,6 @@ MonoBehaviour:
   fallMultiplier: 4
   fallMultiplierTransitionSpeed: 1.5
   maxFallSpeed: 30
-  jumpKey: 32
-  sprintKey: 304
-  slowKey: 306
   slowDownCooldown: 0.1
   playerHeight: 2
   groundMask:
@@ -1718,6 +1715,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   lr: {fileID: 4112217916060168878}
+  stickyCrosshair: {fileID: 0}
+  normalCrosshair: {fileID: 0}
   maxGrappleDistance: 50
   grappleDelayTime: 0.25
   overshootYAxis: 5
@@ -1726,7 +1725,6 @@ MonoBehaviour:
   launchToPoint: {x: 0, y: 0, z: 0}
   pullForce: 200
   grapplingCd: 1
-  grappleKey: 324
   animator: {fileID: 0}
   stickyHandHand: {fileID: 0}
   canSeeGrapple: 0
@@ -3826,7 +3824,7 @@ Transform:
   m_GameObject: {fileID: 5751141341592308918}
   serializedVersion: 2
   m_LocalRotation: {x: 0.07473895, y: -0.0015653931, z: 0.000117324096, w: 0.9972019}
-  m_LocalPosition: {x: -21.091396, y: -0.4449345, z: 2.8234987}
+  m_LocalPosition: {x: -0.3495828, y: -0.8379842, z: -0.99910736}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5796,7 +5794,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8982784535112778868}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.03347548, y: -0.0015690043, z: 0.000052552685, w: 0.99943835}
+  m_LocalRotation: {x: 0.033475857, y: -0.0015689728, z: 0.000052552223, w: 0.99943835}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5942,7 +5940,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4359d40b1a28fd4f80cd1ad3ef9e1d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 9014216846357172605}
+  Level1Complete: 0
+  Level2Complete: 0
+  Level3Complete: 0
 --- !u!1 &9128483879117668810
 GameObject:
   m_ObjectHideFlags: 0
