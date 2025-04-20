@@ -10,9 +10,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] public GameObject pauseMenu;
     
-    public bool Level1Complete = false;
-    public bool Level2Complete = false;
-    public bool Level3Complete = false;
+    public bool Level1Complete;
+    public bool Level2Complete;
+    public bool Level3Complete;
 
     public void Update()
     {
@@ -27,6 +27,27 @@ public class GameManager : MonoBehaviour
                 Resume();
             }
         }
+    }
+
+    public void GoToHub1()
+    {
+        Level1Complete = true;
+        SceneManager.LoadScene("HubLevel");
+        Debug.Log("Going to Hub Level.");
+    }
+
+    public void GoToHub2()
+    {
+        Level2Complete = true;
+        SceneManager.LoadScene("HubLevel");
+        Debug.Log("Going to Hub Level.");
+    }
+
+    public void GoToHub3()
+    {
+        Level3Complete = true;
+        SceneManager.LoadScene("HubLevel");
+        Debug.Log("Going to Hub Level.");
     }
 
     public void StartGame()
