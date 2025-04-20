@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class Level1Win : MonoBehaviour
+public class Level2Win : MonoBehaviour
 {
     public GameManager gameManager;
     public GameObject winItem;
@@ -15,7 +15,7 @@ public class Level1Win : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            gameManager.Level1Complete = true;
+            gameManager.Level2Complete = true;
             winItem.GetComponent<Collider>().enabled = false;
             winItem.GetComponent<Renderer>().enabled = false;
             StartCoroutine(LoadHubDelayed());
@@ -25,6 +25,6 @@ public class Level1Win : MonoBehaviour
     private IEnumerator LoadHubDelayed()
     {
         yield return new WaitForSeconds(2f);
-        gameManager.GoToHub1();
+        gameManager.GoToHub2();
     }
 }

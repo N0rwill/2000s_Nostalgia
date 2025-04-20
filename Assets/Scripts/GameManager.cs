@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    // Singleton pattern
+    public static GameManager Instance { get; private set; }
+    
     private bool paused = false;
 
     [SerializeField] public GameObject pauseMenu;
@@ -13,6 +16,20 @@ public class GameManager : MonoBehaviour
     public bool Level1Complete;
     public bool Level2Complete;
     public bool Level3Complete;
+
+    private void Awake()
+    {
+        // Keep GameManager between scenes
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     public void Update()
     {

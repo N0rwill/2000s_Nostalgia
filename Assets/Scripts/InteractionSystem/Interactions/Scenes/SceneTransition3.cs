@@ -3,11 +3,16 @@ using UnityEngine.SceneManagement;
 
 public class SceneTransition3 : MonoBehaviour, IInteractable
 {
-    public GameManager GameManager;
+    public GameManager gameManager;
+
+    void Awake()
+    {
+        gameManager = FindObjectOfType<GameManager>();
+    }
 
     public bool canInteract()
     {
-        if (GameManager.Level2Complete == true && GameManager.Level3Complete == false)
+        if (gameManager.Level2Complete == true && gameManager.Level3Complete == false)
         {
             return true;
         }
