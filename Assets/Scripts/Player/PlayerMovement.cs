@@ -30,9 +30,6 @@ public class PlayerMovement : MonoBehaviour
     public float maxFallSpeed;
 
     [Header("Keybinds")]
-    public KeyCode jumpKey = KeyCode.Space;
-    public KeyCode sprintKey = KeyCode.LeftShift;
-    public KeyCode slowKey = KeyCode.LeftControl;
     private bool canSlowDown;
     public float slowDownCooldown;
 
@@ -155,7 +152,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
         // Handle slow key
-        else if (Input.GetKeyDown(slowKey) && canSlowDown)
+        else if (Input.GetButtonDown("Slow") && canSlowDown)
         {
             if (isWheelying)
             {

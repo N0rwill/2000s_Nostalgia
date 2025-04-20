@@ -30,9 +30,6 @@ public class GrappleMovement : MonoBehaviour
     public float grapplingCd;
     private float grapplingCdTimer;
 
-    [Header("Input")]
-    public KeyCode grappleKey = KeyCode.Mouse1;
-
     [Header("Animation")]
     public Animator animator;
 
@@ -55,8 +52,7 @@ public class GrappleMovement : MonoBehaviour
 
     void Update()
     {
-
-        if (Input.GetKeyDown(grappleKey))
+        if (Input.GetButtonDown("Grapple"))
         {
             StartGrapple();
         }
