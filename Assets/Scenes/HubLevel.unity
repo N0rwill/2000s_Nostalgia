@@ -9745,6 +9745,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 369d5249817197542918ff93c99bd4a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameManager: {fileID: 0}
 --- !u!4 &1098328334 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 58c3614af9791be4db373f76142845a5, type: 3}
@@ -11956,7 +11957,7 @@ GameObject:
   - component: {fileID: 1452239333}
   - component: {fileID: 1452239332}
   m_Layer: 0
-  m_Name: Audio Source
+  m_Name: HubMusic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
