@@ -5,33 +5,38 @@ public class MarbleSound : MonoBehaviour
     [SerializeField] private AudioSource marbleAudioSource;
 
     [SerializeField] private Rigidbody rb;
+    
+    private bool isColliding = false;
 
-    private void OnCollisionStay(Collision collision)
+    private void Update()
+    {
+        if (isColliding && rb.velocity.magnitude > 0.5f)
+        {
+            // Play the sound if moving and touching ground
+            marbleAudioSource.Play();
+        }
+        else
+        {
+            // Stop the sound if not moving or not touching ground
+            marbleAudioSource.Stop();
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
     {
         // Check if the object is a marble
-        if (collision.gameObject.CompareTag("Marble"))
+        if (collision.gameObject.CompareTag("Ground"))
         {
-            // Check if the marble is moving
-            if (rb.velocity.magnitude > 0.1f)
-            {
-                // Play the sound
-                marbleAudioSource.Play();
-            }
-            else if (rb.velocity.magnitude < 0.5f)
-            {
-                // Stop the sound if the marble is not moving
-                marbleAudioSource.Stop();
-            }
+            isColliding = true;
         }
     }
     
     private void OnCollisionExit(Collision collision)
     {
-        // Check if the object is a marble
-        if (collision.gameObject.CompareTag("Marble"))
+        // Check if the object is the ground
+        if (collision.gameObject.CompareTag("Ground"))
         {
-            // Stop the sound when the marble exits the collision
-            marbleAudioSource.Stop();
+            isColliding = false;
         }
     }
 }
