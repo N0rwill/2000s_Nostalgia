@@ -848,6 +848,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!54 &36181476 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 5119902688971662137, guid: cd59737ba73c4164fb56f0404f51e72c, type: 3}
+  m_PrefabInstance: {fileID: 1113507015}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &36181479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 36181470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9e22f96152ce314784622e979399a23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  marbleAudioSource: {fileID: 36181475}
+  rb: {fileID: 36181476}
 --- !u!4 &38425412 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8836782758657643612, guid: 8761465da5d046e4ab2467f34c04047d, type: 3}
@@ -27686,6 +27705,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6818006287628819873, guid: cd59737ba73c4164fb56f0404f51e72c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 36181475}
+    - targetCorrespondingSourceObject: {fileID: 6818006287628819873, guid: cd59737ba73c4164fb56f0404f51e72c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 36181479}
   m_SourcePrefab: {fileID: 100100000, guid: cd59737ba73c4164fb56f0404f51e72c, type: 3}
 --- !u!4 &1116224704 stripped
 Transform:

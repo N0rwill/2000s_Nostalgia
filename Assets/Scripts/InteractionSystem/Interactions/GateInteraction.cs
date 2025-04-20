@@ -13,6 +13,8 @@ public class GateInteraction : MonoBehaviour, IInteractable
     [SerializeField] private float leverMoveSpeed = 2f;
     private Vector3 leverStartPosition;
 
+    [SerializeField] private AudioSource leverAudioSource;
+
     private bool isOpen = false;
 
     void Start()
@@ -34,6 +36,8 @@ public class GateInteraction : MonoBehaviour, IInteractable
             StartCoroutine(MoveGate(gateTransform.transform.localPosition, gateStartPosition));
 
             StartCoroutine(MoveLever(leverTransform.localRotation.eulerAngles, leverStartPosition));
+            // Play lever sound
+            leverAudioSource.PlayOneShot(leverAudioSource.clip);
         }
         else
         {
@@ -41,6 +45,8 @@ public class GateInteraction : MonoBehaviour, IInteractable
             StartCoroutine(MoveGate(gateTransform.transform.localPosition, gateStartPosition + Vector3.up * gateMoveDistance));
 
             StartCoroutine(MoveLever(leverTransform.localRotation.eulerAngles, new Vector3(leverStartPosition.x, leverStartPosition.y, leverStartPosition.z + leverMoveDistance)));
+            // Play lever sound
+            leverAudioSource.PlayOneShot(leverAudioSource.clip);
         }
     }
 
