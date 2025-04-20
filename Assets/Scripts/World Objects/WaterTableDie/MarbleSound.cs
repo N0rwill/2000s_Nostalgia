@@ -3,40 +3,19 @@ using UnityEngine;
 public class MarbleSound : MonoBehaviour
 {
     [SerializeField] private AudioSource marbleAudioSource;
-
     [SerializeField] private Rigidbody rb;
-    
-    private bool isColliding = false;
 
     private void Update()
     {
-        if (isColliding && rb.velocity.magnitude > 0.5f)
+        //bool shouldPlay = isColliding && rb.velocity.magnitude > 0.5f;
+
+        if (rb.velocity.magnitude > 0.5f && !marbleAudioSource.isPlaying)
         {
-            // Play the sound if moving and touching ground
             marbleAudioSource.Play();
         }
-        else
+        else if (rb.velocity.magnitude < 0.1f && marbleAudioSource.isPlaying)
         {
-            // Stop the sound if not moving or not touching ground
             marbleAudioSource.Stop();
-        }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        // Check if the object is a marble
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isColliding = true;
-        }
-    }
-    
-    private void OnCollisionExit(Collision collision)
-    {
-        // Check if the object is the ground
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isColliding = false;
         }
     }
 }
