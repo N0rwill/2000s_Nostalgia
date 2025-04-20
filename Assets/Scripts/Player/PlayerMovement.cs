@@ -50,7 +50,10 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Animation")]
     public Animator animator;
-    private bool wasWheelying; // Track previous wheelying state
+    private bool wasWheelying;
+
+    [Header("sounds")]
+    public AudioSource heelyWindSound;
 
     public Transform orientation;
 
@@ -204,14 +207,25 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("isWalking", false);
             animator.SetBool("isSprinting", false);
             animator.SetBool("isHeelying", false);
+
+            if (heelyWindSound.isPlaying)
+            {
+                heelyWindSound.Stop();
+            }
         }
         // state wheely
         else if (isWheelying)
         {
             state = MovementState.wheelying;
             currentTargetSpeed = wheelySpeed;
+
             animator.SetBool("isHeelying", true);
             animator.SetBool("isSprinting", false);
+
+            if (!heelyWindSound.isPlaying)
+            {
+                heelyWindSound.Play();
+            }
         }
         // state sprinting
         else if (isSprinting)
@@ -221,6 +235,11 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("isSprinting", true);
             animator.SetBool("isWalking", false);
             animator.SetBool("isHeelying", false);
+
+            if (heelyWindSound.isPlaying)
+            {
+                heelyWindSound.Stop();
+            }
         }
         // state walking
         else if (isGrounded && (horizontalInput != 0 || verticalInput != 0))
