@@ -9762,6 +9762,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 518266632}
+  Level1Complete: 0
+  Level2Complete: 0
+  Level3Complete: 0
 --- !u!4 &1137160174
 Transform:
   m_ObjectHideFlags: 0
@@ -12327,6 +12330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 666c737fa1a25e54a9b8580c87761938, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 1137160173}
 --- !u!64 &1536385847
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -19478,6 +19482,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3215970355871247ab5c88a55f55b17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameManager: {fileID: 1137160173}
 --- !u!1001 &1972048145
 PrefabInstance:
   m_ObjectHideFlags: 0

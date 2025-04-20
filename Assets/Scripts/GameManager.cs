@@ -9,6 +9,10 @@ public class GameManager : MonoBehaviour
     private bool paused = false;
 
     [SerializeField] public GameObject pauseMenu;
+    
+    public bool Level1Complete = false;
+    public bool Level2Complete = false;
+    public bool Level3Complete = false;
 
     public void Update()
     {
@@ -18,9 +22,9 @@ public class GameManager : MonoBehaviour
             {
                 Pause();
             }
-            else 
-            { 
-                Resume(); 
+            else
+            {
+                Resume();
             }
         }
     }

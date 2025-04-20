@@ -3,9 +3,18 @@ using UnityEngine.SceneManagement;
 
 public class SceneTransition2 : MonoBehaviour, IInteractable
 {
+    public GameManager gameManager;
+
     public bool canInteract()
     {
-        return true;
+        if (gameManager.Level1Complete == true && gameManager.Level2Complete == false)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public void Interact(Interactor interactor)
