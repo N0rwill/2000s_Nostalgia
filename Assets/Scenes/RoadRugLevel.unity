@@ -13094,12 +13094,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 608937350354583897, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 608937350354583897, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 608937350354583897, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1181337357}
     - target: {fileID: 608937350354583897, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Settings
+      objectReference: {fileID: 0}
+    - target: {fileID: 608937350354583897, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PauseMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 608937350354583897, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1153686825734474410, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
       propertyPath: hasWheely
@@ -13192,10 +13208,14 @@ PrefabInstance:
     - target: {fileID: 2957595402705311292, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1181337357}
     - target: {fileID: 2957595402705311292, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Resume
+      objectReference: {fileID: 0}
+    - target: {fileID: 2957595402705311292, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PauseMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4948890376641717223, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13268,10 +13288,14 @@ PrefabInstance:
     - target: {fileID: 7381829994957551638, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 187631940}
+      objectReference: {fileID: 1181337357}
     - target: {fileID: 7381829994957551638, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: QuitGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381829994957551638, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PauseMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7687800331984085935, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
       propertyPath: m_WarningMessage
