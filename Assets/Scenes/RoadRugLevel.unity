@@ -10217,8 +10217,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 920eb3853ac72a44f9c72be370e1dd44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  Player: {fileID: 0}
 --- !u!65 &1023875383
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10260,7 +10258,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3b9274733c4d7664fb8b1254732ecc53, type: 2}
+  - {fileID: 2100000, guid: 55934914e0aaa3d47925c7837976b3f2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10299,7 +10297,7 @@ Transform:
   m_GameObject: {fileID: 1023875381}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.2111632, z: -0, w: 0.97745085}
-  m_LocalPosition: {x: -28.857666, y: 0, z: 141.85583}
+  m_LocalPosition: {x: -27.25, y: 0, z: 144.78}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13650,7 +13648,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4948890376641717223, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.013915579
+      value: 0.013915538
       objectReference: {fileID: 0}
     - target: {fileID: 4948890376641717223, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
       propertyPath: m_LocalRotation.y
@@ -13658,7 +13656,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4948890376641717223, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.03863453
+      value: 0.03863445
       objectReference: {fileID: 0}
     - target: {fileID: 6514226409424511323, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
       propertyPath: m_AnchoredPosition.x
