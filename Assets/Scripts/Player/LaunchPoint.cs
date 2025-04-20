@@ -11,7 +11,7 @@ public class LaunchPoint : MonoBehaviour
     Plane[] planes;
     Collider objCollider;
     public GameObject player;
-    public float maxRange = 10000;
+    public float maxRange = 25;
 
     private void Start()
     {
@@ -29,6 +29,8 @@ public class LaunchPoint : MonoBehaviour
                 {
                     // In Range and i can see you!
 
+                    player = hit.collider.gameObject;
+
                     planes = GeometryUtility.CalculateFrustumPlanes(lockOnCam);
 
                     if (GeometryUtility.TestPlanesAABB(planes, objCollider.bounds))
@@ -45,11 +47,20 @@ public class LaunchPoint : MonoBehaviour
                         player.GetComponent<GrappleMovement>().canSeeGrapple = false;
                     }
                 }
+                else
+                {
+                    player = null;
+                }
+            }
+            else 
+            {
+                player = null;
             }
         }
         else 
         {
             player.GetComponent<GrappleMovement>().canSeeGrapple = false;
+            player = null;
         }
         
     }

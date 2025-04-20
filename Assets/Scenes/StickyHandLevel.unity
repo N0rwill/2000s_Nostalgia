@@ -15757,6 +15757,10 @@ PrefabInstance:
       propertyPath: stickyCrosshair
       value: 
       objectReference: {fileID: 848050513}
+    - target: {fileID: 127216193921079193, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
+      propertyPath: maxGrappleDistance
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 608937350354583897, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
       propertyPath: m_Navigation.m_Mode
       value: 0
@@ -15935,31 +15939,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6651822304707676922, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.4388647
+      value: 3.438868
       objectReference: {fileID: 0}
     - target: {fileID: 6651822304707676922, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.4449345
+      value: -0.44493544
       objectReference: {fileID: 0}
     - target: {fileID: 6651822304707676922, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.4615457
+      value: 0.46154523
       objectReference: {fileID: 0}
     - target: {fileID: 6651822304707676922, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7383997
+      value: 0.7383996
       objectReference: {fileID: 0}
     - target: {fileID: 6651822304707676922, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.06438307
+      value: 0.06438282
       objectReference: {fileID: 0}
     - target: {fileID: 6651822304707676922, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.66874564
+      value: -0.66874576
       objectReference: {fileID: 0}
     - target: {fileID: 6651822304707676922, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.058309745
+      value: 0.058309536
       objectReference: {fileID: 0}
     - target: {fileID: 7381829994957551638, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
       propertyPath: m_Navigation.m_Mode
@@ -25011,7 +25015,7 @@ MonoBehaviour:
   launchObject: {fileID: 1770461966}
   lockOnCam: {fileID: 249949976}
   player: {fileID: 801648973}
-  maxRange: 20
+  maxRange: 10000
 --- !u!1 &1655713154 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1646560364970445634, guid: 75b871415b39fc444bb9de91039905db, type: 3}
