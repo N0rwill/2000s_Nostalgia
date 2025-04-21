@@ -4598,7 +4598,7 @@ GameObject:
   - component: {fileID: 1004125255}
   - component: {fileID: 1004125254}
   m_Layer: 0
-  m_Name: TreeParticle
+  m_Name: Level2Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10113,6 +10113,9 @@ MonoBehaviour:
   Level1Complete: 0
   Level2Complete: 0
   Level3Complete: 0
+  level1Particle: {fileID: 1888186179}
+  level2Particle: {fileID: 1004125253}
+  level3Particle: {fileID: 2024214080}
 --- !u!4 &1137160174
 Transform:
   m_ObjectHideFlags: 0
@@ -14509,7 +14512,7 @@ GameObject:
   - component: {fileID: 1888186181}
   - component: {fileID: 1888186180}
   m_Layer: 0
-  m_Name: WaterTableParticle
+  m_Name: Level1Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20606,7 +20609,7 @@ GameObject:
   - component: {fileID: 2024214082}
   - component: {fileID: 2024214081}
   m_Layer: 0
-  m_Name: RoadRugParticle
+  m_Name: Leveel3Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

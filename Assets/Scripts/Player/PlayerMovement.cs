@@ -52,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator;
     private bool wasWheelying;
 
-    [Header("sounds")]
+    [Header("Sounds")]
     public AudioSource heelyWindSound;
 
     public Transform orientation;

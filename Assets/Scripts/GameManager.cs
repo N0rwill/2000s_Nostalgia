@@ -5,10 +5,16 @@ public class GameManager : MonoBehaviour
 {
     // Singleton pattern
     public static GameManager Instance { get; private set; }
-    
+
+    [Header("Level Completion Flags")]
     public bool Level1Complete;
     public bool Level2Complete;
     public bool Level3Complete;
+
+    [Header("Particle Effects")]
+    [SerializeField] private GameObject level1Particle;
+    [SerializeField] private GameObject level2Particle;
+    [SerializeField] private GameObject level3Particle;
 
     private void Awake()
     {
@@ -22,12 +28,21 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        ParticleLogic();
+
+        level1Particle.SetActive(true);
+        level2Particle.SetActive(false);
+        level3Particle.SetActive(false);
     }
 
     public void GoToHub1()
     {
         Level1Complete = true;
         SceneManager.LoadScene("HubLevel");
+
+        ParticleLogic();
+
         Debug.Log("Going to Hub Level.");
     }
 
@@ -35,6 +50,9 @@ public class GameManager : MonoBehaviour
     {
         Level2Complete = true;
         SceneManager.LoadScene("HubLevel");
+
+        ParticleLogic();
+
         Debug.Log("Going to Hub Level.");
     }
 
@@ -42,6 +60,32 @@ public class GameManager : MonoBehaviour
     {
         Level3Complete = true;
         SceneManager.LoadScene("HubLevel");
+
+        ParticleLogic();
+
         Debug.Log("Going to Hub Level.");
+    }
+
+    private void ParticleLogic()
+    {
+        if (Level1Complete)
+        {
+            level1Particle.SetActive(false);
+            level2Particle.SetActive(true);
+            level3Particle.SetActive(false);
+        }
+
+        if (Level2Complete && Level1Complete)
+        {
+            level1Particle.SetActive(false);
+            level2Particle.SetActive(false);
+            level3Particle.SetActive(true);
+        }
+        if (Level3Complete && Level2Complete && Level1Complete)
+        {
+            level1Particle.SetActive(false);
+            level2Particle.SetActive(false);
+            level3Particle.SetActive(false);
+        }
     }
 }

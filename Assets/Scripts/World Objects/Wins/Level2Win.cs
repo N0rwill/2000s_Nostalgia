@@ -33,4 +33,12 @@ public class Level2Win : MonoBehaviour
         yield return new WaitForSeconds(3f);
         gameManager.GoToHub2();
     }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            gameManager.GoToHub2();
+        }
+    }
 }
