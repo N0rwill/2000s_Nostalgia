@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class ShadowClone : MonoBehaviour
 {
+    [SerializeField] private ShadowCaught shadowCaught;
+
     [SerializeField] private PlayerMovement player;
     public float delayStart;
     private float actDelay;
@@ -22,7 +24,7 @@ public class ShadowClone : MonoBehaviour
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+        //player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
     }
 
     void FixedUpdate()
@@ -100,9 +102,9 @@ public class ShadowClone : MonoBehaviour
 
     void Caught(Vector3 playerPosition)
     {
-        if (distanceToPlayer < 1)
+        if (distanceToPlayer < 0.1f)
         {
-            
+            shadowCaught.Caught();
         }
 
     }
