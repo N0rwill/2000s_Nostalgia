@@ -34,7 +34,7 @@ public class ShadowClone : MonoBehaviour
         {
             position = player.transform.position,
             scale = player.transform.localScale,
-            anim = player.animator.GetCurrentAnimatorClipInfo(0)[0].clip,
+            //anim = player.animator.GetCurrentAnimatorClipInfo(0)[0].clip,
         };
 
         playerPositions.Add(posNew);
