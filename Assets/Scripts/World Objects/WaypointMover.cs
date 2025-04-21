@@ -10,38 +10,43 @@ public class WaypointMover : MonoBehaviour
     [SerializeField] private float distanceThreshold = 0.5f;
     [SerializeField] public float spawnDelay = 0f;
 
-    [SerializeField] private GameObject objectToSpawn;
-    private GameObject clone;
+    private GameObject[] objectsArray; // Array to store the objects
+    private Transform firstPosition; // Reference to the first position
 
-    // Number of objects to spawn
-    [SerializeField] public int numberOfSpawns = 1;
+    private GameObject clone;
+    public int current = 0;
+    public int max;
+
 
     //waypoint target object moving to
     private Transform currentWaypoint;
 
-
+    
     void Start()
     {
+
         StartCoroutine(SpawnObjectsAfterDelay());
+                
     }
 
     private IEnumerator SpawnObjectsAfterDelay()
     {
-        for (int i = 0; i < numberOfSpawns; i++)
+        
+        // Wait for the specified delay
+        yield return new WaitForSeconds(spawnDelay);
+
+        // Spawn a new GameObject
+        clone = Instantiate(gameObject, transform.position, Quaternion.identity);
+        current++;
+            
+
+        // Initialize the WaypointMover on the new object
+        WaypointMover mover = clone.GetComponent<WaypointMover>();
+        if (mover != null)
         {
-            // Wait for the specified delay
-            yield return new WaitForSeconds(spawnDelay);
-
-            // Spawn a new GameObject
-            clone = Instantiate(objectToSpawn, transform.position, Quaternion.identity);
-
-            // Initialize the WaypointMover on the new object
-            WaypointMover mover = clone.GetComponent<WaypointMover>();
-            if (mover != null)
-            {
-                mover.Initialize(waypoints, moveSpeed, distanceThreshold);
-            }
+            mover.Initialize(waypoints, moveSpeed, distanceThreshold);
         }
+        
     }
 
     public void Initialize(Waypoint waypoints, float moveSpeed, float distanceThreshold)
@@ -62,16 +67,19 @@ public class WaypointMover : MonoBehaviour
     void Update()
     {
         Move();
+        if (current >= max)
+        {
+            StopAllCoroutines();
+        }
+
     }
 
     public void Move()
     {
         if (currentWaypoint == null)
         {
-            Destroy(gameObject);
             return;
         }
-
         // Move towards the current waypoint
         transform.position = Vector3.MoveTowards(transform.position, currentWaypoint.position, moveSpeed * Time.deltaTime);
 
@@ -81,10 +89,9 @@ public class WaypointMover : MonoBehaviour
             currentWaypoint = waypoints.GetNextWaypoint(currentWaypoint, gameObject);
 
             // If no next waypoint is found, stop further movement
-            if (currentWaypoint == null)
+            if (waypoints.endWaypoint)
             {
-                Debug.Log($"{gameObject.name}: Reached the last waypoint. Destroying object.");
-                Destroy(gameObject); // Destroy the object
+                
                 return;
             }
 
@@ -101,5 +108,16 @@ public class WaypointMover : MonoBehaviour
         
     }
 
-    
+    /*public void StopSpawning()
+    {
+        if (spawnCoroutine != null)
+        {
+            StopCoroutine(spawnCoroutine); // Stop the coroutine
+            //spawnCoroutine = null; // Clear the reference
+            Debug.Log("Spawn coroutine stopped.");
+        }
+    }*/
+
+
+
 }

@@ -43,12 +43,11 @@ public class Waypoint : MonoBehaviour
         // If it's the last waypoint, go back to the first waypoint
         if (currentWaypoint.GetSiblingIndex() < transform.childCount - 1)
         {
-            //endWaypoint = true;
             return transform.GetChild(currentWaypoint.GetSiblingIndex() + 1);
         }
         else
         {
-            return transform.GetChild(currentWaypoint.GetSiblingIndex() + 1);
+            return transform.GetChild(0);
         }
         
 
