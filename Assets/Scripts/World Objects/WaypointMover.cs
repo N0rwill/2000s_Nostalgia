@@ -10,9 +10,6 @@ public class WaypointMover : MonoBehaviour
     [SerializeField] private float distanceThreshold = 0.5f;
     [SerializeField] public float spawnDelay = 0f;
 
-    private GameObject[] objectsArray; // Array to store the objects
-    private Transform firstPosition; // Reference to the first position
-
     private GameObject clone;
     public int current = 0;
     public int max;
