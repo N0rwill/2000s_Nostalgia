@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 090fd0129c0b69c47bb1c9467bf474d9, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -2105,6 +2105,9 @@ MonoBehaviour:
   Level1Complete: 0
   Level2Complete: 0
   Level3Complete: 0
+  level1Particle: {fileID: 0}
+  level2Particle: {fileID: 0}
+  level3Particle: {fileID: 0}
 --- !u!4 &187631941
 Transform:
   m_ObjectHideFlags: 0
@@ -7279,8 +7282,8 @@ Transform:
   m_GameObject: {fileID: 740039748}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 50, y: -0.5, z: -16}
-  m_LocalScale: {x: 43.593197, y: 61.189445, z: 53.082455}
+  m_LocalPosition: {x: 50, y: -0.5, z: -14.2}
+  m_LocalScale: {x: 29.414694, y: 61.189445, z: 45.009293}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -13787,7 +13790,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4948890376641717223, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.01391556
+      value: 0.013915456
       objectReference: {fileID: 0}
     - target: {fileID: 4948890376641717223, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
       propertyPath: m_LocalRotation.y
@@ -13795,7 +13798,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4948890376641717223, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.038634494
+      value: 0.038634285
       objectReference: {fileID: 0}
     - target: {fileID: 6514226409424511323, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -20938,10 +20941,10 @@ SceneRoots:
   - {fileID: 1290880041}
   - {fileID: 1724220903}
   - {fileID: 1452037703}
+  - {fileID: 1882491397}
   - {fileID: 2138500142}
   - {fileID: 740039752}
   - {fileID: 1467771304}
-  - {fileID: 1882491397}
   - {fileID: 792765246}
   - {fileID: 963930476}
   - {fileID: 1905799198}
