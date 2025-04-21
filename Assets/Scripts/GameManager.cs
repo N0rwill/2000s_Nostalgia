@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject level2Particle;
     [SerializeField] private GameObject level3Particle;
 
+    [Header("Ending Sequence")]
+    [SerializeField] RevealStuff revealStuff;
+
     private void Awake()
     {
         // Keep GameManager between scenes
@@ -31,9 +35,17 @@ public class GameManager : MonoBehaviour
 
         ParticleLogic();
 
-        level1Particle.SetActive(true);
-        level2Particle.SetActive(false);
-        level3Particle.SetActive(false);
+        SceneManager.sceneLoaded += OnSceneLoaded; // Add this line
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded; // Clean up event subscription
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        revealStuff = FindObjectOfType<RevealStuff>();
     }
 
     public void GoToHub1()
@@ -62,6 +74,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("HubLevel");
 
         ParticleLogic();
+        StartCoroutine(WaitAndEndGame());
 
         Debug.Log("Going to Hub Level.");
     }
@@ -86,6 +99,18 @@ public class GameManager : MonoBehaviour
             level1Particle.SetActive(false);
             level2Particle.SetActive(false);
             level3Particle.SetActive(false);
+        }
+    }
+    private IEnumerator WaitAndEndGame()
+    {
+        yield return new WaitForSeconds(1f);
+        if (revealStuff != null)
+        {
+            revealStuff.Reveal();
+        }
+        else
+        {
+            Debug.LogWarning("SwitchCam reference not set in GameManager!");
         }
     }
 }
