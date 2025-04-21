@@ -24,7 +24,7 @@ public class PauseMenu : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("WaterLevel");
+        SceneManager.LoadScene("HubLevel");
         Debug.Log("Start game.");
     }
 
