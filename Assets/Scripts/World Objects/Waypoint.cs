@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class Waypoint : MonoBehaviour
 {
-    [Range(0f, 2f)]
+    [Range(0f, 10f)]
     [SerializeField] private float waypointSize = 1f;
+
+    public bool endWaypoint = false;
 
     private void OnDrawGizmos()
     {
         foreach(Transform t in transform)
         {
             Gizmos.color = Color.blue;
-            Gizmos.DrawWireSphere(t.position, waypointSize);
+            Gizmos.DrawSphere(t.position, waypointSize);
         }
 
         Gizmos.color = Color.red;
@@ -41,11 +43,12 @@ public class Waypoint : MonoBehaviour
         // If it's the last waypoint, go back to the first waypoint
         if (currentWaypoint.GetSiblingIndex() < transform.childCount - 1)
         {
+            //endWaypoint = true;
             return transform.GetChild(currentWaypoint.GetSiblingIndex() + 1);
         }
         else
         {
-            return transform.GetChild(0);
+            return transform.GetChild(currentWaypoint.GetSiblingIndex() + 1);
         }
         
 
