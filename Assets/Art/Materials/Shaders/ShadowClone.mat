@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-5560844698351014282
+--- !u!114 &-6342295297855703730
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,9 +20,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Purple
+  m_Name: ShadowClone
   m_Shader: {fileID: -6465566751694194690, guid: 276983fccb9dd1542bf7b5c6fce15fd4, type: 3}
-  m_Parent: {fileID: 2100000, guid: 7754bf3666a269d4fbd2e3bfe36d2821, type: 2}
+  m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -35,11 +35,29 @@ Material:
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs: []
+    m_TexEnvs:
+    - _SampleTexture2D_5c44f1cd8f184ce997f8ed014e87697c_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 3d133d872599b1f40ad7d5a35e5b696f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Fresnel: 0.91
+    - _Fresnel: 0.73
+    - _QueueControl: 0
+    - _QueueOffset: 0
     m_Colors:
-    - _Color: {r: 0.81201553, g: 0, b: 1, a: 1}
-    - _TextureColor: {r: 0.23242807, g: 0.068529725, b: 0.26415092, a: 0}
+    - _Color: {r: 0.98833734, g: 0, b: 0.65216815, a: 1}
+    - _TextureColor: {r: 0.37406832, g: 0.13416697, b: 0.6320754, a: 0}
   m_BuildTextureStacks: []
