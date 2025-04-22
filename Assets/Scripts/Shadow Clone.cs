@@ -29,6 +29,8 @@ public class ShadowClone : MonoBehaviour
 
     void FixedUpdate()
     {
+        shadowAnim.Play("Run");
+
         //array set for shadow position
         PositionInfo posNew = new PositionInfo
         {
@@ -49,6 +51,7 @@ public class ShadowClone : MonoBehaviour
                 shadow.SetActive(true);
                 //place shadow
                 SetShadowPos(playerPositions[0]);
+                
                 //create visual fx
                 /*if (true)
                 {
@@ -62,7 +65,7 @@ public class ShadowClone : MonoBehaviour
         //set info
         PositionInfo setInfo = playerPositions[0];
         SetShadowPos(setInfo);
-        SetShadowAnimation(setInfo);
+        //SetShadowAnimation(setInfo);
 
         
         distanceToPlayer = Vector3.Distance(player.transform.position, shadow.transform.position);
@@ -85,7 +88,7 @@ public class ShadowClone : MonoBehaviour
         
     }
 
-    void SetShadowAnimation(PositionInfo setInfo)
+    /*void SetShadowAnimation(PositionInfo setInfo)
     {
         //set shadow animation
         if (setInfo.anim != null)
@@ -97,7 +100,7 @@ public class ShadowClone : MonoBehaviour
                 shadowAnim.Play(setInfo.anim.name);
             }
         }
-    }
+    }*/
 
 
     void Caught(Vector3 playerPosition)
