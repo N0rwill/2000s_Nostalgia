@@ -3812,8 +3812,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5751141341592308918}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.0453511, y: 1.6050655, z: -3.6619034}
+  m_LocalRotation: {x: 0.086644515, y: -0.07064038, z: 0.0061593275, w: 0.9937126}
+  m_LocalPosition: {x: -16.941397, y: 5.6550655, z: 77.553505}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3853,7 +3853,7 @@ Camera:
     height: 1
   near clip plane: 0.05
   far clip plane: 250
-  field of view: 50
+  field of view: 45
   orthographic: 0
   orthographic size: 10
   m_Depth: -1
@@ -6202,11 +6202,11 @@ PrefabInstance:
     - target: {fileID: -2580490377954455921, guid: 6ff44912186f66a459b103379aeca671, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 0c9de3971d9a91647955076683d599cc, type: 2}
+      objectReference: {fileID: 2100000, guid: 815ae298e5a1b604a953297b76dbdcaa, type: 2}
     - target: {fileID: -2580490377954455921, guid: 6ff44912186f66a459b103379aeca671, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: a1309edd671bdb24baf1e66041c61542, type: 2}
+      objectReference: {fileID: 2100000, guid: d5e813c82ec51c44d8503114deb40f64, type: 2}
     - target: {fileID: 919132149155446097, guid: 6ff44912186f66a459b103379aeca671, type: 3}
       propertyPath: m_Name
       value: Skyler T Pose with Rig
