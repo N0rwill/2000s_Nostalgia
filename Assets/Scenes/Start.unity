@@ -610,7 +610,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &164254366
 RectTransform:
   m_ObjectHideFlags: 0
@@ -900,7 +900,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 566.17, y: -100.98995}
-  m_SizeDelta: {x: 0, y: 30}
+  m_SizeDelta: {x: 10, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &357806211
 MonoBehaviour:
@@ -1151,12 +1151,12 @@ MonoBehaviour:
 
     Space to Jump
 
-    Control once to Sprint
+    Shift once to Sprint
 
-    Control
-    twice to Heely
+    Shift twice
+    to Heely
 
-    Shift to Stop'
+    Control to Stop'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b57bbf5f48eb04d4392663897db0b876, type: 2}
   m_sharedMaterial: {fileID: 4794460365720801616, guid: b57bbf5f48eb04d4392663897db0b876, type: 2}
@@ -1616,8 +1616,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4286989787
-  m_fontColor: {r: 0.85882354, g: 0.27058825, b: 0.5254902, a: 1}
+    rgba: 4279676963
+  m_fontColor: {r: 0.1353045, g: 0.6886792, b: 0.08770915, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2310,7 +2310,7 @@ RectTransform:
   m_Father: {fileID: 1002637851}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3025,7 +3025,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 566.17, y: 54.417046}
-  m_SizeDelta: {x: 0, y: 30}
+  m_SizeDelta: {x: 10, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1134183183
 MonoBehaviour:
@@ -3621,7 +3621,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 566.17, y: 215}
-  m_SizeDelta: {x: 0, y: 30}
+  m_SizeDelta: {x: 10, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1225618412
 MonoBehaviour:
@@ -3764,7 +3764,7 @@ RectTransform:
   m_Father: {fileID: 1376011111}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4167,7 +4167,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 566.17, y: -260.53998}
-  m_SizeDelta: {x: 0, y: 30}
+  m_SizeDelta: {x: 10, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1601327341
 MonoBehaviour:
@@ -4293,7 +4293,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1604769355
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4613,12 +4613,12 @@ MonoBehaviour:
 
     Space to Jump
 
-    Control once to Sprint
+    Shift once to Sprint
 
-    Control
-    twice to Heely
+    Shift twice
+    to Heely
 
-    Shift to Stop'
+    Control to Stop'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b57bbf5f48eb04d4392663897db0b876, type: 2}
   m_sharedMaterial: {fileID: 4794460365720801616, guid: b57bbf5f48eb04d4392663897db0b876, type: 2}
