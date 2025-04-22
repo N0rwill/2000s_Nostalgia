@@ -1993,6 +1993,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: af86fa4629302fa4a9466870ccaa32f6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0c9de3971d9a91647955076683d599cc, type: 2}
     - target: {fileID: 919132149155446097, guid: af86fa4629302fa4a9466870ccaa32f6, type: 3}
       propertyPath: m_Name
       value: Skyler No Shoes Low
@@ -3365,7 +3369,7 @@ SpriteRenderer:
   m_Size: {x: 54, y: 72}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1483476042
@@ -4498,7 +4502,7 @@ SpriteRenderer:
   m_Size: {x: 54, y: 72}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1886448228
@@ -5410,6 +5414,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1149818924}
     m_Modifications:
+    - target: {fileID: 1010853483036756565, guid: 4e475cb0e060c6f468b9dcbf4c979a95, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0c9de3971d9a91647955076683d599cc, type: 2}
     - target: {fileID: 2183235641695842618, guid: 4e475cb0e060c6f468b9dcbf4c979a95, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.849
@@ -5418,6 +5426,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0.046
       objectReference: {fileID: 0}
+    - target: {fileID: 2421131919088435650, guid: 4e475cb0e060c6f468b9dcbf4c979a95, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0c9de3971d9a91647955076683d599cc, type: 2}
     - target: {fileID: 3590136893561354925, guid: 4e475cb0e060c6f468b9dcbf4c979a95, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.72209066

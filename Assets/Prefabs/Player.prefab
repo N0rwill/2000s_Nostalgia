@@ -1041,8 +1041,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1215590154451041918}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.027892554, y: -0.93763953, z: 0.077439494, w: 0.3377238}
-  m_LocalPosition: {x: 0.000012397766, y: 0, z: 0.000009059906}
+  m_LocalRotation: {x: 0.074738935, y: -0.0015654933, z: 0.000117331605, w: 0.9972019}
+  m_LocalPosition: {x: -0.00000023841858, y: 0, z: 0.00000047683716}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1366,8 +1366,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1469419592191909378}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.027892554, y: -0.93763953, z: 0.077439494, w: 0.3377238}
-  m_LocalPosition: {x: 0.000012397766, y: 0, z: 0.000009059906}
+  m_LocalRotation: {x: 0.074738935, y: -0.0015654933, z: 0.000117331605, w: 0.9972019}
+  m_LocalPosition: {x: -0.00000023841858, y: 0, z: 0.00000047683716}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3812,8 +3812,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5751141341592308918}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.027892584, y: -0.9376394, z: 0.077439494, w: 0.33772415}
-  m_LocalPosition: {x: 2.2134213, y: -0.4449345, z: 3.9413826}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.0453511, y: 1.6050655, z: -3.6619034}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3853,7 +3853,7 @@ Camera:
     height: 1
   near clip plane: 0.05
   far clip plane: 250
-  field of view: 45
+  field of view: 50
   orthographic: 0
   orthographic size: 10
   m_Depth: -1
@@ -4153,7 +4153,7 @@ Transform:
   m_GameObject: {fileID: 6506423864672368903}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.2134213, y: -0.4449346, z: 3.9413826}
+  m_LocalPosition: {x: -0.3413961, y: -0.4449345, z: -3.606501}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5783,8 +5783,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8982784535112778868}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.013915456, y: -0.9400384, z: 0.038634285, w: 0.33858785}
-  m_LocalPosition: {x: 0.000012397766, y: 0, z: 0.000009059906}
+  m_LocalRotation: {x: 0.03347548, y: -0.0015690043, z: 0.000052552685, w: 0.99943835}
+  m_LocalPosition: {x: -0.00000023841858, y: 0, z: 0.00000047683716}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6202,11 +6202,11 @@ PrefabInstance:
     - target: {fileID: -2580490377954455921, guid: 6ff44912186f66a459b103379aeca671, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 815ae298e5a1b604a953297b76dbdcaa, type: 2}
+      objectReference: {fileID: 2100000, guid: 0c9de3971d9a91647955076683d599cc, type: 2}
     - target: {fileID: -2580490377954455921, guid: 6ff44912186f66a459b103379aeca671, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: d5e813c82ec51c44d8503114deb40f64, type: 2}
+      objectReference: {fileID: 2100000, guid: a1309edd671bdb24baf1e66041c61542, type: 2}
     - target: {fileID: 919132149155446097, guid: 6ff44912186f66a459b103379aeca671, type: 3}
       propertyPath: m_Name
       value: Skyler T Pose with Rig
