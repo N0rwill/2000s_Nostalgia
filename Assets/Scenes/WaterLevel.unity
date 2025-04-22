@@ -26910,6 +26910,14 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.00011733133
       objectReference: {fileID: 0}
+    - target: {fileID: 2453274675374152416, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 60014854}
+    - target: {fileID: 2453274675374152416, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_volume
+      objectReference: {fileID: 0}
     - target: {fileID: 2463075922950036774, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.3413961
