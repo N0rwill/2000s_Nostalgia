@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EndTrigger : MonoBehaviour
 {
@@ -44,5 +45,8 @@ public class EndTrigger : MonoBehaviour
             yield return null;
         }
         canvasGroup.alpha = 1f;
+
+        yield return new WaitForSecondsRealtime(5f);
+        SceneManager.LoadScene("Start");
     }
 }
