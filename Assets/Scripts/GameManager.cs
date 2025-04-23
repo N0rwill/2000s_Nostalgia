@@ -27,15 +27,12 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
         else
         {
             Destroy(gameObject);
         }
-
-        ParticleLogic();
-
-        SceneManager.sceneLoaded += OnSceneLoaded; // Add this line
     }
 
     private void OnDestroy()
@@ -46,6 +43,8 @@ public class GameManager : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         revealStuff = FindObjectOfType<RevealStuff>();
+
+        ParticleLogic();
     }
 
     public void GoToHub1()
