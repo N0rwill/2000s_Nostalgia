@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -200,18 +201,13 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Player is frozen");
         }
         // idle
-        else if (isGrounded && horizontalInput == 0 && verticalInput == 0)
+        else if (horizontalInput == 0 && verticalInput == 0)
         {
             state = MovementState.idle;
             animator.SetBool("isIdle", true);
             animator.SetBool("isWalking", false);
             animator.SetBool("isSprinting", false);
             animator.SetBool("isHeelying", false);
-
-            /*if (heelyWindSound.isPlaying)
-            {
-                heelyWindSound.Stop();
-            }*/
         }
         // state wheely
         else if (isWheelying)
@@ -324,6 +320,15 @@ public class PlayerMovement : MonoBehaviour
         if (horizontalInput == 0 && verticalInput == 0 && !isGrounded && !OnSlope())
         {
             rb.velocity = Vector3.Lerp(rb.velocity, new Vector3(0, rb.velocity.y, 0), Time.deltaTime * 1f);
+        }
+
+        // Unstick player if airborne, not moving, but trying to move
+        if (!isGrounded
+            && Mathf.Abs(rb.velocity.x) < 0.05f
+            && Mathf.Abs(rb.velocity.z) < 0.05f
+            && (Mathf.Abs(horizontalInput) > 0.1f || Mathf.Abs(verticalInput) > 0.1f))
+        {
+            rb.AddForce(Vector3.up * 0.33f, ForceMode.VelocityChange);
         }
     }
 
