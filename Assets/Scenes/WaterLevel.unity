@@ -842,6 +842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9edd496b9a9a6e94ca34c4c03715fd47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resetMarble: {fileID: 1738612590}
   deathTrigger1: {fileID: 325983112}
 --- !u!65 &21756393
 BoxCollider:
@@ -20436,6 +20437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53c3ff188b1b5764c9467b9c4ea3ca46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resetMarble: {fileID: 1738612590}
   deathTrigger2: {fileID: 296709681}
 --- !u!65 &618880101
 BoxCollider:
@@ -52140,6 +52142,57 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7175821405095992566, guid: 65dd86f331fc14a41aa02a73553478c1, type: 3}
   m_PrefabInstance: {fileID: 1467166610}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1738612589
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1738612591}
+  - component: {fileID: 1738612590}
+  m_Layer: 0
+  m_Name: SceneManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1738612590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738612589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 434caf5d09d97f1488e800b3716e1493, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  marble: {fileID: 36181470}
+  respawnPoint1: {fileID: 951884890}
+  respawnPoint2: {fileID: 1377484192}
+  respawnPoint3: {fileID: 1348649001}
+  shouldRespawn1: 0
+  shouldRespawn2: 0
+  shouldRespawn3: 0
+--- !u!4 &1738612591
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738612589}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.808797, y: 15.969672, z: 79.360306}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1738654008 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2967321050754029610, guid: b590b964e60021547a3eda383dfec2e4, type: 3}
@@ -64409,6 +64462,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 1702141318}
   - {fileID: 1688247027}
+  - {fileID: 1738612591}
   - {fileID: 2076345981}
   - {fileID: 2127731069}
   - {fileID: 821636407}
