@@ -10,8 +10,8 @@ public class WaypointMover : MonoBehaviour
     [SerializeField] private float distanceThreshold = 0.5f;
     [SerializeField] public float spawnDelay = 0f;
 
-    private GameObject clone;
-    public int current = 0;
+    public GameObject clone;
+    public int amount = 0;
     public int max;
 
 
@@ -23,7 +23,7 @@ public class WaypointMover : MonoBehaviour
     {
 
         StartCoroutine(SpawnObjectsAfterDelay());
-                
+
     }
 
     private IEnumerator SpawnObjectsAfterDelay()
@@ -33,8 +33,8 @@ public class WaypointMover : MonoBehaviour
         yield return new WaitForSeconds(spawnDelay);
 
         // Spawn a new GameObject
-        clone = Instantiate(gameObject, transform.position, Quaternion.identity);
-        current++;
+        Instantiate(clone, transform.position, Quaternion.identity);
+        
             
 
         // Initialize the WaypointMover on the new object
@@ -64,11 +64,6 @@ public class WaypointMover : MonoBehaviour
     void Update()
     {
         Move();
-        if (current >= max)
-        {
-            StopAllCoroutines();
-        }
-
     }
 
     public void Move()
@@ -88,7 +83,6 @@ public class WaypointMover : MonoBehaviour
             // If no next waypoint is found, stop further movement
             if (waypoints.endWaypoint)
             {
-                
                 return;
             }
 
@@ -105,16 +99,5 @@ public class WaypointMover : MonoBehaviour
         
     }
 
-    /*public void StopSpawning()
-    {
-        if (spawnCoroutine != null)
-        {
-            StopCoroutine(spawnCoroutine); // Stop the coroutine
-            //spawnCoroutine = null; // Clear the reference
-            Debug.Log("Spawn coroutine stopped.");
-        }
-    }*/
-
-
-
+    
 }

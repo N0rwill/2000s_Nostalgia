@@ -33,25 +33,15 @@ public class Waypoint : MonoBehaviour
         {
             return transform.GetChild(0);
         }
-        if (movingObject.CompareTag("Chase"))
-        {
-            if (currentWaypoint.GetSiblingIndex() >= transform.childCount - 1)
-            {
-                return transform.GetChild(currentWaypoint.GetSiblingIndex());
-            }
-        }
+        
         // If it's the last waypoint, go back to the first waypoint
         if (currentWaypoint.GetSiblingIndex() < transform.childCount - 1)
         {
+            endWaypoint = true;
             return transform.GetChild(currentWaypoint.GetSiblingIndex() + 1);
         }
-        else
-        {
-            return transform.GetChild(0);
-        }
-        
 
-
+        return transform.GetChild(0);
 
     }
 }
