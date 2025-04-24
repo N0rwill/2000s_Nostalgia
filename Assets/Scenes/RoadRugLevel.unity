@@ -58545,6 +58545,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 1.2
       objectReference: {fileID: 0}
+    - target: {fileID: 4534027857147210537, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4948890376641717223, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.000012397766
@@ -58559,7 +58563,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4948890376641717223, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.01391551
+      value: 0.0139155695
       objectReference: {fileID: 0}
     - target: {fileID: 4948890376641717223, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
       propertyPath: m_LocalRotation.y
@@ -58567,7 +58571,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4948890376641717223, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.038634393
+      value: 0.038634513
       objectReference: {fileID: 0}
     - target: {fileID: 6514226409424511323, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -68514,7 +68518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0af9971b335e344e9a99b33f8a5b4cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 0}
+  pauseMenu: {fileID: 1671681332}
 --- !u!4 &1724220903
 Transform:
   m_ObjectHideFlags: 0
