@@ -13883,7 +13883,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1724220902}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: StartGame
+        m_MethodName: ReturnToHub
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -58559,7 +58559,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4948890376641717223, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.013915456
+      value: 0.0139155565
       objectReference: {fileID: 0}
     - target: {fileID: 4948890376641717223, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
       propertyPath: m_LocalRotation.y
@@ -58567,7 +58567,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4948890376641717223, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.038634285
+      value: 0.038634486
       objectReference: {fileID: 0}
     - target: {fileID: 6514226409424511323, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
       propertyPath: m_AnchoredPosition.x
