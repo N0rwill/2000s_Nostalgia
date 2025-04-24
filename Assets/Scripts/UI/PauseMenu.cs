@@ -66,5 +66,8 @@ public class PauseMenu : MonoBehaviour
     {
         SceneManager.LoadScene("HubLevel");
         pauseMenu.SetActive(false);
+        Time.timeScale = 1f;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }
