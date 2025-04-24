@@ -1766,6 +1766,33 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8121458691440216956, guid: 4c31c1f14962c68428d3a87b016001c1, type: 3}
   m_PrefabInstance: {fileID: 178157110}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &183504155 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5638973692707780869, guid: 423b813b368784842af95eb7d0576f51, type: 3}
+  m_PrefabInstance: {fileID: 1585787877}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &183504159
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 183504155}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8809034453911638434, guid: 423b813b368784842af95eb7d0576f51, type: 3}
 --- !u!4 &204460896 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b71a225dde18cb241b052356d4b20fba, type: 3}
@@ -5292,6 +5319,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 732498635}
   m_CullTransparentMesh: 1
+--- !u!1 &733826564 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -7857215468534941645, guid: 423b813b368784842af95eb7d0576f51, type: 3}
+  m_PrefabInstance: {fileID: 1585787877}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &733826568
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 733826564}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8063282028255208748, guid: 423b813b368784842af95eb7d0576f51, type: 3}
 --- !u!4 &745020261 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e692d9deaae6430428db31dfe776068a, type: 3}
@@ -12233,8 +12287,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4359d40b1a28fd4f80cd1ad3ef9e1d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Level1Complete: 0
-  Level2Complete: 0
+  Level1Complete: 1
+  Level2Complete: 1
   Level3Complete: 0
   level1Particle: {fileID: 1888186179}
   level2Particle: {fileID: 1004125253}
@@ -16231,6 +16285,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 423b813b368784842af95eb7d0576f51, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1755495487}
+    - targetCorrespondingSourceObject: {fileID: 5638973692707780869, guid: 423b813b368784842af95eb7d0576f51, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 183504159}
+    - targetCorrespondingSourceObject: {fileID: -7857215468534941645, guid: 423b813b368784842af95eb7d0576f51, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 733826568}
   m_SourcePrefab: {fileID: 100100000, guid: 423b813b368784842af95eb7d0576f51, type: 3}
 --- !u!4 &1585787878 stripped
 Transform:
