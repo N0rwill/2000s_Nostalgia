@@ -10,7 +10,7 @@ public class StartClone : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            clone.SetActive(true);
+            clone.SetActive(!clone.activeSelf);
             Destroy(gameObject);
         }
     }
