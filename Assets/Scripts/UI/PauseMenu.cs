@@ -65,5 +65,6 @@ public class PauseMenu : MonoBehaviour
     public void ReturnToHub()
     {
         SceneManager.LoadScene("HubLevel");
+        pauseMenu.SetActive(false);
     }
 }
