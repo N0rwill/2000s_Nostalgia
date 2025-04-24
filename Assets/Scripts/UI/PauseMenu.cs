@@ -24,7 +24,7 @@ public class PauseMenu : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("HubLevel");
+        SceneManager.LoadScene("OpeningCutScene");
         Debug.Log("Start game.");
     }
 
@@ -60,5 +60,10 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    public void ReturnToHub()
+    {
+        SceneManager.LoadScene("HubLevel");
     }
 }
