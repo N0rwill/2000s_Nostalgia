@@ -1,3 +1,4 @@
+using System;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
@@ -326,6 +327,7 @@ public class PlayerMovement : MonoBehaviour
         if (!isGrounded
             && Mathf.Abs(rb.velocity.x) < 0.05f
             && Mathf.Abs(rb.velocity.z) < 0.05f
+            && Mathf.Abs(rb.velocity.y) < 0.5f
             && (Mathf.Abs(horizontalInput) > 0.1f || Mathf.Abs(verticalInput) > 0.1f))
         {
             rb.AddForce(Vector3.up * 0.33f, ForceMode.VelocityChange);
