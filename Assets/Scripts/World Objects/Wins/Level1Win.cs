@@ -5,6 +5,7 @@ public class Level1Win : MonoBehaviour
 {
     public GameManager gameManager;
     public GameObject winItem;
+    public GameObject win1UI;
 
     [SerializeField] private AudioSource winAudioSource;
 
@@ -23,6 +24,8 @@ public class Level1Win : MonoBehaviour
             winItem.GetComponent<Animator>().enabled = false;
 
             winAudioSource.Play();
+
+            win1UI.SetActive(true);
 
             StartCoroutine(LoadHubDelayed());
         }
