@@ -17255,7 +17255,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6514226409424511323, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -25.151672
+      value: -25.151611
       objectReference: {fileID: 0}
     - target: {fileID: 6514226409424511323, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -17315,7 +17315,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8077479486478020253, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -25.151672
+      value: -25.151611
       objectReference: {fileID: 0}
     - target: {fileID: 8077479486478020253, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -17383,16 +17383,16 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7735214989857949684, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
       insertIndex: 0
-      addedObject: {fileID: 1592247581}
-    - targetCorrespondingSourceObject: {fileID: 7735214989857949684, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
-      insertIndex: 1
       addedObject: {fileID: 1447742730}
     - targetCorrespondingSourceObject: {fileID: 7735214989857949684, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
-      insertIndex: 2
+      insertIndex: 1
       addedObject: {fileID: 2066128798}
     - targetCorrespondingSourceObject: {fileID: 7735214989857949684, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
-      insertIndex: 3
+      insertIndex: 2
       addedObject: {fileID: 367971046}
+    - targetCorrespondingSourceObject: {fileID: 7735214989857949684, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1592247581}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5751141341592308918, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
       insertIndex: -1
@@ -34262,7 +34262,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00012207031, y: 0.00018310547}
+  m_AnchoredPosition: {x: 0, y: 0.00012207031}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2066128799
