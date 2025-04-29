@@ -3480,6 +3480,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 518266632}
+  settingsPanel: {fileID: 526349417}
 --- !u!1001 &468254408
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3796,6 +3797,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 518266632}
+  settingsPanel: {fileID: 518266632}
 --- !u!1 &526349417
 GameObject:
   m_ObjectHideFlags: 0
@@ -14512,6 +14514,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4787775829566001534, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
+      propertyPath: settingsPanel
+      value: 
+      objectReference: {fileID: 526349417}
     - target: {fileID: 4948890376641717223, guid: 66d8119d41aaaef4da605fe5a8b284a2, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0.033475515

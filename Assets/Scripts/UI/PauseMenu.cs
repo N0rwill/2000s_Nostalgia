@@ -6,6 +6,7 @@ public class PauseMenu : MonoBehaviour
     private bool paused = false;
 
     public GameObject pauseMenu;
+    public GameObject settingsPanel;
 
     public void Update()
     {
@@ -56,6 +57,7 @@ public class PauseMenu : MonoBehaviour
     public void Resume()
     {
         pauseMenu.SetActive(false);
+        settingsPanel.SetActive(false);
         paused = false;
         Time.timeScale = 1f;
         Cursor.visible = false;
