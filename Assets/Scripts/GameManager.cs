@@ -20,6 +20,11 @@ public class GameManager : MonoBehaviour
     [Header("Ending Sequence")]
     [SerializeField] RevealStuff revealStuff;
 
+    private void Start()
+    {
+        Time.timeScale = 1f;
+    }
+
     private void Awake()
     {
         // Keep GameManager between scenes
@@ -28,6 +33,9 @@ public class GameManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
             SceneManager.sceneLoaded += OnSceneLoaded;
+
+            // reset the reveal stuff
+            revealStuff.ResetReveal();
         }
         else
         {
@@ -50,6 +58,7 @@ public class GameManager : MonoBehaviour
     public void GoToHub1()
     {
         Level1Complete = true;
+        Time.timeScale = 1f;
         SceneManager.LoadScene("HubLevel");
 
         ParticleLogic();
@@ -60,6 +69,7 @@ public class GameManager : MonoBehaviour
     public void GoToHub2()
     {
         Level2Complete = true;
+        Time.timeScale = 1f;
         SceneManager.LoadScene("HubLevel");
 
         ParticleLogic();
@@ -70,6 +80,7 @@ public class GameManager : MonoBehaviour
     public void GoToHub3()
     {
         Level3Complete = true;
+        Time.timeScale = 1f;
         SceneManager.LoadScene("HubLevel");
 
         ParticleLogic();
@@ -106,6 +117,16 @@ public class GameManager : MonoBehaviour
         if (revealStuff != null)
         {
             revealStuff.Reveal();
+
+            // reset the level completion flags
+            Level1Complete = false;
+            Level2Complete = false;
+            Level3Complete = false;
+
+            // reset the particle effects
+            level1Particle.SetActive(true);
+            level2Particle.SetActive(false);
+            level3Particle.SetActive(false);
         }
         else
         {

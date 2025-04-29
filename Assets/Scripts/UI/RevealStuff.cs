@@ -27,6 +27,19 @@ public class RevealStuff : MonoBehaviour
         StartCoroutine(WinUI());
     }
 
+    public void ResetReveal()
+    {
+        cameraFree.SetActive(false);
+        cameraFixed.SetActive(true);
+
+        invisibleCollider.SetActive(true);
+
+        hubMusic.SetActive(true);
+        endSound.SetActive(false);
+
+        Time.timeScale = 1f;
+    }
+
     private IEnumerator WinUI()
     {
         winUI.SetActive(true);

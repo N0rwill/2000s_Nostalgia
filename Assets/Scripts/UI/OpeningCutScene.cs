@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class OpeningCutScene : MonoBehaviour
 {
     public GameObject cutSceneUI;
-    public CanvasGroup canvasGroup; 
+    public CanvasGroup canvasGroup;
 
     void Start()
     {
@@ -32,5 +32,15 @@ public class OpeningCutScene : MonoBehaviour
             yield return null;
         }
         canvasGroup.alpha = 1f;
+    }
+
+
+    void Update()
+    {
+        if (Input.GetButtonDown("Cancel") || Input.GetButtonDown("Submit"))
+        {
+            StopAllCoroutines(); // Stop any ongoing coroutines
+            SceneManager.LoadScene("HubLevel");
+        }
     }
 }

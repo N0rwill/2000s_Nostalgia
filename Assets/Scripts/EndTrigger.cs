@@ -47,6 +47,7 @@ public class EndTrigger : MonoBehaviour
         canvasGroup.alpha = 1f;
 
         yield return new WaitForSecondsRealtime(5f);
+        Time.timeScale = 1f;
         SceneManager.LoadScene("Start");
     }
 }
